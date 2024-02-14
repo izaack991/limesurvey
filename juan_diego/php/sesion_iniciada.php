@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 include '../../login/redirect.php';
 
@@ -15,14 +16,18 @@ $usuariovalidacion = explode('.', $emaildominio[0]);
 
 $validacion = $emaildominio[1];
 
-if ($validacion == 'uais.edu.mx' || 'gmail.com' ) {
+if ($correo == true){
+    if ($validacion == 'uais.edu.mx' || 'gmail.com' ) {
     
-    if ($usuariovalidacion[1] == true) {
-        header('Location: Pagina_Docente.php');
+        if ($usuariovalidacion[1] == true) {
+            header('Location: Pagina_Docente');
+        } else {
+            header('Location: Pagina_Alumno');
+        }
+        
     } else {
-        header('Location: Pagina_Alumno.php');
+        echo '"<script language="javascript">alert("Solo puedes ingresar con un correo institucional UAIM");window.location.href="../../login/login.php"</script>"';
     }
-    
 } else {
-    echo '"<script language="javascript">alert("Solo puedes ingresar con un correo institucional UAIM");window.location.href="../../login/login.php"</script>"';
+    echo '"<script language="javascript">alert("No tienes una sesion iniciada");window.location.href="../../login/login"</script>"';
 }

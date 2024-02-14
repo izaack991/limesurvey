@@ -7,9 +7,6 @@ $nombre = $_SESSION['nombre'];
 $emaildominio = $_SESSION['emaildominio'];
 $emailusuario = $_SESSION['emailusuario'];
 
-if ($emaildominio == '') {
-    echo '"<script language="javascript">alert("No tienes una sesion iniciada");window.location.href="../../login/login.php"</script>"';
-}
 ?>
 
 <!DOCTYPE html>
