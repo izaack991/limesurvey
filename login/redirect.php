@@ -1,4 +1,5 @@
 <?php
+
 require_once 'conf.php';
  
 // authenticate code from Google OAuth Flow 
@@ -12,6 +13,8 @@ if (isset($_GET['code'])) {
   $email =  $google_account_info->email;
   $name =  $google_account_info->name;
  
+  $_SESSION['cuenta'] = $email;
+  $_SESSION['nombre'] = $name;
   // now you can use this profile info to create account in your website and make user logged in. 
 } 
 

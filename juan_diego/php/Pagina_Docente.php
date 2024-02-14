@@ -1,3 +1,17 @@
+<?php 
+error_reporting(0);
+session_start();
+include '../../login/redirect.php';
+$correo = $_SESSION['cuenta'];
+$nombre = $_SESSION['nombre'];
+$emaildominio = $_SESSION['emaildominio'];
+$emailusuario = $_SESSION['emailusuario'];
+
+if ($emaildominio == '') {
+    echo '"<script language="javascript">alert("No tienes una sesion iniciada");window.location.href="../../login/login.php"</script>"';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,6 +22,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    
+    <h3><?php echo $correo?></h3>
+    <h3><?php echo $emailusuario?></h3>
+    <h3><?php echo $emaildominio?></h3>
+    <h3><?php echo $nombre?></h3>
 
 <div class="card mb-3 shadow-lg mb-5 bg-body rounded" style="width: 36%; margin-left:32%; margin-top:50px;">
     <div class="card-body">
