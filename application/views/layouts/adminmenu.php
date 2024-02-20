@@ -83,6 +83,12 @@
                     <?php endif; ?>
                 </li>
 
+                <li
+                    class="nav-item d-flex"><a
+                        href="envio_correos.html"
+                        class="nav-link ps-0">Envio de Correos</a>
+                </li>
+
 
                 <!-- Help menu -->
                 <?php $this->renderPartial("/admin/super/_help_menu", []); ?>
