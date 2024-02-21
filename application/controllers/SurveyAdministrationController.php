@@ -32,6 +32,7 @@ class SurveyAdministrationController extends LSBaseController
                     'index',
                     'insert',
                     'listsurveys',
+                    'enviocorreo',
                     'newSurvey',
                     'regenerateQuestionCode',
                     'renderItemsSelected',
@@ -245,6 +246,25 @@ class SurveyAdministrationController extends LSBaseController
 
         $this->aData = $aData;
         $this->render('listSurveys_view', $aData);
+    }
+    public function actionEnviocorreos()
+    {
+        Yii::app()->loadHelper('surveytranslator');
+        $aData = array();
+        $aData['issuperadmin'] = false;
+
+        if (Permission::model()->hasGlobalPermission('superadmin', 'read')) {
+            $aData['issuperadmin'] = true;
+        }
+        $aData['model'] = new Survey('search');
+        $aData['groupModel'] = new SurveysGroups('search');
+        $aData['topbar']['title'] = gT('Envio de Correos');
+        $aData['topbar']['backLink'] = App()->createUrl('admin/index');
+
+        $aData['topbar']['middleButtons'] = $this->renderPartial('partial/topbarBtns/leftSideButtons', [], true);
+
+        $this->aData = $aData;
+        $this->render('envio_correos', $aData);
     }
 
     /**

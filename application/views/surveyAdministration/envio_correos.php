@@ -47,19 +47,27 @@
     }
 </style>
 <body>
-    <div class="d-flex justify-content-center align-items-center mt-5 pt-4">
+    <div class="d-flex justify-content-center align-items-center">
+        <!--Formulario de envio de correos-->
         <form id="formulario">
+            <!--Card para contener los elementos del formulario-->
             <div class="card mb-3 shadow  mb-5 bg-body text-secondary fw-bold"
                 style="width: 41rem; border-radius: 1rem;">
 
+                <!--Encabezado de la card-->
                 <div class="card-header text-center">
                     <h2 class="card-title fw-bold py-2">ENVIO DE CORREOS</h4>
                 </div>
 
+                <!--Contenido del cuerpo de la card-->
                 <div class="card-body">
+
+                    <!--Fila para ingresar los correos a agregar-->
                     <div class="row">
                         <div class="col">
                             <div class="input-group mb-2">
+
+                                <!--Boton para limpiar el contenido del campo de texto-->
                                 <button type="button" onclick="limpiarCampoCorreo()" class="btn btn-yellow"
                                     title="Limpiar campo de correo"><i
                                         class="fas fa-eraser text-white fs-3"></i></button>
@@ -67,6 +75,7 @@
                                     placeholder="correo@ejemplo.com" required title="Agrega un correo">
                                 <input type="file" id="fileInput" class="form-control" accept=".csv"
                                     style="display: none;">
+                                <!--Boton para importar documento CSV con los correos-->
                                 <button type="button" onclick="document.getElementById('fileInput').click()" class="btn btn-dark" title="Importar archivo .csv">
                                     <i class="fas fa-file-import text-white fs-3"></i>
                                 </button>
@@ -74,6 +83,7 @@
                         </div>
                     </div>
 
+                    <!--Fila que contiene los botones de Agregar y Enviar-->
                     <div class="row mt-3">
                         <div class="col">
                             <button type="button" class="btn btn-purple w-100 fs-4 fw-bold" onclick="agregarCorreo()"
@@ -85,6 +95,7 @@
                         </div>
                     </div>
 
+                    <!--Fila para la tabla y el input de Buscar-->
                     <div class="row mt-4">
                         <table class="table table-dark mb-0">
                             <thead>
@@ -111,7 +122,9 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
+<!--Codigo JavaScript para el funcionamiento del formulario-->
 <script>
     var correoArray = [];
 
@@ -254,5 +267,4 @@
             });
         });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </html>

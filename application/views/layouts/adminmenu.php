@@ -85,8 +85,8 @@
 
                 <li
                     class="nav-item d-flex"><a
-                        href="envio_correos.html"
-                        class="nav-link ps-0">Envio de Correos</a>
+                        href="<?php echo $this->createUrl("surveyAdministration/enviocorreos"); ?>"
+                        class="nav-link ps-0"><?php eT("Envio de Correos"); ?></a>
                 </li>
 
 
