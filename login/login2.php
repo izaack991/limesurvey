@@ -28,7 +28,7 @@
                 <div class="input-group-text" style="color: white;">
                     <i class='bx bxs-user' style="height: 1rem;"></i>
                 </div>
-                <input class="form-control" maxlength="15" type="text" placeholder="Matricula" name='matricula'>
+                <input class="form-control" maxlength="15" type="text" placeholder="Matricula" name="matricula" required="true" pattern="[a-zA-Z0-9\s]*" title="Solo se permiten letras, números y espacios." >
             </div>
             <button type="submit" class="btn text-white w-100 mt-4 fw-bold shadow-sm" style="background-color:#14ae5c;">Iniciar Sesión</button>
         </div>

@@ -5,41 +5,51 @@ $username = "root";
 $password = "";
 $database = "prueba";
 
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($servername, $username, $password);
 
 // Verifica la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+$query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$database'";
+$result = $conn->query($query);
 
-// Login
-if (isset($_POST['matricula'])) {
+if ($result->num_rows > 0) {
+    
+    $conn->close();
 
-    $_usuario = $_POST['matricula'];
-    //$_password = $_POST['password'];
+    $conn = new mysqli($servername, $username, $password, $database);
 
-    $sql = "SELECT * FROM alumno WHERE matricula='$_usuario'";
+    // Login
+    if (isset($_POST['matricula'])) {
 
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
+        $_usuario = $_POST['matricula'];
+        //$_password = $_POST['password'];
 
-    $result = $stmt->get_result();
+        $sql = "SELECT * FROM alumno WHERE matricula='$_usuario'";
 
-    if($result->num_rows > 0)
-    {
-        header("location:../../juan_diego/php/Pagina_Alumno.php");
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        if($result->num_rows > 0)
+        {
+            header("location:../../juan_diego/php/Pagina_Alumno.php");
+        }
+        else
+        {
+            echo '"<script language="javascript">alert("Matricula no encontrada");window.location.href="../../login/login2.php"</script>"';
+        }
+    } else {
+        echo '"<script language="javascript">alert("Solo puedes ingresar con un correo institucional UAIM");window.location.href="../../login/login2.php"</script>"';
     }
-    else
-    {
-        echo '"<script language="javascript">alert("Matricula no encontrada");window.location.href="../../login/login2.php"</script>"';
-    }
-} else {
-    echo '"<script language="javascript">alert("Solo puedes ingresar con un correo institucional UAIM");window.location.href="../../login/login2.php"</script>"';
-}
-
 
 // Cierra la conexión
 $conn->close();
+
+} else {
+    echo '"<script language="javascript">alert("Error en la base de datos. Base de datos no encontrada");window.location.href="../../login/login2.php"</script>"';
+}
+
+
 ?>
 
 
