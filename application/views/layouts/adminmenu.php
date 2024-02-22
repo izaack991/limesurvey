@@ -83,6 +83,12 @@
                     <?php endif; ?>
                 </li>
 
+                <li
+                    class="nav-item d-flex"><a
+                        href="<?php echo $this->createUrl("surveyAdministration/enviocorreos"); ?>"
+                        class="nav-link ps-0"><?php eT("Envio de Correos"); ?></a>
+                </li>
+
 
                 <!-- Help menu -->
                 <?php $this->renderPartial("/admin/super/_help_menu", []); ?>
