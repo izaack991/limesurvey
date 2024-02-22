@@ -34,6 +34,7 @@ session_start();
             </div>
         </div>
         <?php require ('redirect.php') ?>
+        <!-- Boton de inicio de sesion con google -->
         <a href=" <?php echo $client->createAuthUrl() ?> ">
         <div class="btn d-flex gap-2 justify-content-center border mt-3 shadow-sm">
             <img src="src/google_icon.jpeg" style="height: 1.6rem;">
