@@ -47,7 +47,7 @@
 
               <div class="mb-3">
                 <label for="alumno" class="form-label">alumno</label>
-                <select class="form-select" id="alumno" name="alumno">
+                <select class="form-select" id="alumno" name="alumno" onclick="cargarDocente()">
                 <option value=""></option>
                 </select>
               </div>

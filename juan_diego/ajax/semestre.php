@@ -1,4 +1,5 @@
 <?php
+// Agrega el archivo que contiene la conexion a la base de datos 
 
 include 'conexion.php';
 
@@ -6,7 +7,7 @@ include 'conexion.php';
 $carrera = $conn->real_escape_string($_GET['carrera']);
 
 $sql = "SELECT COUNT(DISTINCT ID_Semestre) AS Total_Semestres
-        FROM MateriaSemestre
+        FROM lime_UAIM_MateriaSemestre
         WHERE ID_Carrera = $carrera";
 
 // Ejecutar la consulta
@@ -20,7 +21,7 @@ if ($resultado->num_rows > 0) {
 
     // Consulta preparada para evitar inyección SQL
     $sql2 = "SELECT *
-             FROM semestre
+             FROM lime_UAIM_semestre
              
              LIMIT $total_semestres";
 
@@ -35,7 +36,7 @@ if ($resultado->num_rows > 0) {
             $semestre[] = $row;
         }
     }
-
+    $conn->close();
     // Devolver el resultado como JSON
     echo json_encode($semestre);
 } else {

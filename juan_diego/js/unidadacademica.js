@@ -1,4 +1,4 @@
-
+// Este script maneja los select de forma dinamica utilizando ajax 
 $(document).ready(function() {
     // Cuando el documento está listo, ejecutar la función
     cargarUnidadesAcademicas();
@@ -28,7 +28,6 @@ $(document).ready(function() {
   
   function cargarCarreras() {
     var unidadSeleccionada = $('#unidadacademica').val();
-
     if (unidadSeleccionada) {
        
         $.ajax({
@@ -122,9 +121,6 @@ function cargarGrupo() {
 
 function cargarAlumno() {
   var grupoSeleccionado = $('#grupo').val();
-  alert (grupoSeleccionado);
-  
-
   if (grupoSeleccionado) {
      
       $.ajax({
@@ -137,7 +133,7 @@ function cargarAlumno() {
             $('#docente').empty();
             // Agregar las opciones al select
             $.each(data, function (index, alumno) {
-                $('#alumno').append('<option value="' + alumno.ID_Alumno + '">' + alumno.nombre+ '</option>');
+                $('#alumno').append('<option value="' + alumno.ID_alumno + '">' + alumno.nombre+ '</option>');
             });
         },
         error: function (error) {
@@ -152,22 +148,19 @@ function cargarAlumno() {
 
 
 function cargarDocente() {
-  var grupoSeleccionado = $('#grupo').val();
-  alert (grupoSeleccionado);
-  
-
-  if (grupoSeleccionado) {
+  var alumnoSeleccionado = $('#alumno').val();
+  if (alumnoSeleccionado) {
      
       $.ajax({
-          url: '../ajax/alumno.php',
+          url: '../ajax/docente.php',
           method: 'GET',
           dataType: 'json',  // Esperamos datos en formato JSON
-          data: { grupo: grupoSeleccionado }, // Pasar la unidad académica seleccionada
+          data: { alumno: alumnoSeleccionado }, // Pasar la unidad académica seleccionada
           success: function (data) {
             $('#docente').empty();
             // Agregar las opciones al select
-            $.each(data, function (index, alumno) {
-                $('#alumno').append('<option value="' + alumno.ID_Alumno + '">' + alumno.nombre+ '</option>');
+            $.each(data, function (index, docente) {
+                $('#docente').append('<option value="' + docente.ID_Maestro + '">' + docente.nombre+ '</option>');
             });
         },
         error: function (error) {
@@ -176,6 +169,6 @@ function cargarDocente() {
     });
 } else {
     // Limpiar el select de carreras si no hay unidad académica seleccionada
-    $('#alumno').empty();
+    $('#docente').empty();
 }
 }
