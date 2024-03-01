@@ -4,7 +4,7 @@ include 'conexion.php';
 // Obtiene el valor del select con dicho ID
 $unidadacademica = $_GET['unidadacademica'];
 // Filtra la carrera dependiendo de la unidad academica
-$sql = "SELECT * FROM lime_UAIM_Carrera WHERE ID_UnidadAcademica = $unidadacademica";
+$sql = "SELECT * FROM lime_uaim_carrera WHERE id_unidadacademica = $unidadacademica";
 $result = $conn->query($sql);
 $resultados = array();
 if ($result->num_rows > 0) {

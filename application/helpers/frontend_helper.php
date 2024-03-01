@@ -1046,6 +1046,7 @@ function randomizationGroupsAndQuestions($surveyid, $preview = false, $fieldmap 
     $_SESSION['survey_' . $surveyid]['fieldmap'] = $fieldmap;
 
     return $fieldmap;
+    echo "<script>alert('$fieldmap');</script>";
 }
 
 /**

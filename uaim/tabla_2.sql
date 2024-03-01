@@ -1,6 +1,6 @@
 -- Crear la base de datos
-CREATE DATABASE unidad;
-USE unidad;
+CREATE DATABASE unidad2;
+USE unidad2;
 
 -- Crear tabla UnidadAcademica
 CREATE TABLE lime_uaim_unidadacademica (
@@ -26,7 +26,7 @@ CREATE TABLE lime_uaim_semestre (
 
 -- Crear tabla Grupo
 CREATE TABLE lime_uaim_grupo (
-    ID_Grupo INT PRIMARY KEY AUTO_INCREMENT,
+    id_grupo INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     id_carrera INT,
     id_semestre INT,
@@ -35,12 +35,12 @@ CREATE TABLE lime_uaim_grupo (
 );
 
 -- Crear tabla Alumno
-CREATE TABLE lime_uaim_carrera (
+CREATE TABLE lime_uaim_alumno (
     id_alumno INT PRIMARY KEY AUTO_INCREMENT,
     tipo BOOLEAN,
     nombre VARCHAR(255) NOT NULL,
-    ID_grupo INT,
-    FOREIGN KEY (ID_grupo) REFERENCES lime_uaim_grupo(ID_grupo)
+    id_grupo INT,
+    FOREIGN KEY (id_grupo) REFERENCES lime_uaim_grupo(id_grupo)
 );
 
 -- Crear tabla Maestro
@@ -71,17 +71,24 @@ CREATE TABLE lime_uaim_materiasemestre (
 CREATE TABLE lime_uaim_docenteMateria (
     id_docente INT,
     id_materiasemestre INT,
-    ID_Grupo INT,
+    id_grupo INT,
     FOREIGN KEY (id_docente) REFERENCES lime_uaim_docente(id_docente),
-    FOREIGN KEY (ID_Grupo) REFERENCES lime_uaim_grupo(ID_grupo),
+    FOREIGN KEY (id_grupo) REFERENCES lime_uaim_grupo(id_grupo),
     FOREIGN KEY (id_materiasemestre) REFERENCES lime_uaim_materiasemestre(id_materiasemestre)
 );
 
 create table lime_uaim_encuesta(
+    token varchar (50),
     id_encuesta int,
     id_evaluador int,
-    id_eval int,
-    FOREIGN KEY (id_docente) REFERENCES lime_uaim_docente(id_docente),
-    FOREIGN KEY (id_alumno) REFERENCES lime_uaim_carrera(id_alumno)
+    id_evaluado int,
+    fecha date,
+    id_unidadacademica int,
+    id_carrera int,
+    id_semestre int,
+    id_grupo int,
+    FOREIGN KEY (id_unidadacademica) REFERENCES lime_uaim_unidadacademica(id_unidadacademica),
+    FOREIGN KEY (id_carrera) REFERENCES lime_uaim_carrera(id_carrera),
+    FOREIGN KEY (id_semestre) REFERENCES lime_uaim_semestre(id_semestre),
+    FOREIGN KEY (id_grupo) REFERENCES lime_uaim_grupo(id_grupo)
 );
-

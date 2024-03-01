@@ -607,6 +607,7 @@ class SurveyIndex extends CAction
                     }
                 }
             }
+            echo('<script>alert("holaasdas");</script>');
         }
 
         // Preview action : Preview right already tested before
@@ -697,6 +698,7 @@ class SurveyIndex extends CAction
 
     private function isSurveyFinished($surveyid)
     {
+         echo ('<script src="juan_diego/js/verificacion.js"></script>');
         return isset($_SESSION['survey_' . $surveyid]['finished']) && $_SESSION['survey_' . $surveyid]['finished'] === true;
     }
 

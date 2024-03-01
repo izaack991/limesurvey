@@ -5,7 +5,7 @@ include 'conexion.php';
 $grupo = $_GET['grupo'];
 
 // Filtra el alumno dependiendo del grupo
-$sql = "SELECT ID_alumno, nombre from lime_UAIM_Alumno where ID_grupo = $grupo";
+$sql = "SELECT id_alumno, nombre from lime_uaim_alumno where id_grupo = $grupo";
 
 $result = $conn->query($sql);
 // Agrega las filas de la consulta en un arreglo

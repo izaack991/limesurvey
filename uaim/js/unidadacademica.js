@@ -1,10 +1,10 @@
 // Este script maneja los select de forma dinamica utilizando ajax 
 $(document).ready(function() {
     // Cuando el documento está listo, ejecutar la función
-    cargarUnidadesAcademicas();
+    cargarunidadacademica();
   });
 
-  function cargarUnidadesAcademicas() {
+  function cargarunidadacademica() {
     $('#unidadacademica').append('<option>Selecciona Unidad</option>');
     // Utilizar AJAX para obtener las unidades académicas desde el servidor
     $.ajax({
@@ -17,7 +17,7 @@ $(document).ready(function() {
 
         // Agregar las opciones al select
         $.each(data, function(index, unidad) {
-          $('#unidadacademica').append('<option value="' + unidad.ID_UnidadAcademica + '">' + unidad.nombre + '</option>');
+          $('#unidadacademica').append('<option value="' + unidad.id_unidadacademica + '">' + unidad.nombre + '</option>');
         });
       },
       error: function(error) {
@@ -26,15 +26,14 @@ $(document).ready(function() {
     });
   }
   
-  function cargarCarreras() {
-    var unidadSeleccionada = $('#unidadacademica').val();
-    if (unidadSeleccionada) {
-       
+  function cargarcarrera() {
+    var unidadseleccionada = $('#unidadacademica').val();
+    if (unidadseleccionada) {
         $.ajax({
             url: '../ajax/carrera.php',
             method: 'GET',
             dataType: 'json',  // Esperamos datos en formato JSON
-            data: { unidadacademica: unidadSeleccionada }, // Pasar la unidad académica seleccionada
+            data: { unidadacademica: unidadseleccionada }, // Pasar la unidad académica seleccionada
             success: function (data) {
                 $('#carrera').empty();
                 $('#semestre').empty();
@@ -43,7 +42,7 @@ $(document).ready(function() {
                 $('#docente').empty();
                 // Agregar las opciones al select
                 $.each(data, function (index, carrera) {
-                    $('#carrera').append('<option value="' + carrera.ID_Carrera + '">' + carrera.nombre + '</option>');
+                    $('#carrera').append('<option value="' + carrera.id_carrera + '">' + carrera.nombre + '</option>');
                 });
             },
             error: function (error) {
@@ -56,7 +55,7 @@ $(document).ready(function() {
     }
 }
 
-  function cargarSemestre() {
+  function cargarsemestre() {
     var CarreraSeleccionada = $('#carrera').val();
     if (CarreraSeleccionada) {
        
@@ -73,7 +72,7 @@ $(document).ready(function() {
 
                 // Agregar las opciones al select
                 $.each(data, function (index, semestre) {
-                    $('#semestre').append('<option value="' + semestre.ID_Semestre + '">' + semestre.nombre+ '</option>');
+                    $('#semestre').append('<option value="' + semestre.id_semestre + '">' + semestre.nombre+ '</option>');
                 });
             },
             error: function (error) {
@@ -87,12 +86,10 @@ $(document).ready(function() {
 }
 
 
-function cargarGrupo() {
+function cargargrupo() {
   
   var SemestreSeleccionado = $('#semestre').val();
   var CarreraSeleccionada = $('#carrera').val();
-  
-
   if (SemestreSeleccionado && CarreraSeleccionada) {
      
       $.ajax({
@@ -106,7 +103,7 @@ function cargarGrupo() {
             $('#docente').empty();
             // Agregar las opciones al select
             $.each(data, function (index, grupo) {
-                $('#grupo').append('<option value="' + grupo.ID_grupo + '">' + grupo.nombre+ '</option>');
+                $('#grupo').append('<option value="' + grupo.id_grupo + '">' + grupo.nombre+ '</option>');
             });
         },
         error: function (error) {
@@ -119,21 +116,21 @@ function cargarGrupo() {
 }
 }
 
-function cargarAlumno() {
-  var grupoSeleccionado = $('#grupo').val();
-  if (grupoSeleccionado) {
+function cargaralumno() {
+  var GrupoSeleccionado = $('#grupo').val();
+  if (GrupoSeleccionado) {
      
       $.ajax({
           url: '../ajax/alumno.php',
           method: 'GET',
           dataType: 'json',  // Esperamos datos en formato JSON
-          data: { grupo: grupoSeleccionado }, // Pasar la unidad académica seleccionada
+          data: { grupo: GrupoSeleccionado }, // Pasar la unidad académica seleccionada
           success: function (data) {
             $('#alumno').empty();
             $('#docente').empty();
             // Agregar las opciones al select
             $.each(data, function (index, alumno) {
-                $('#alumno').append('<option value="' + alumno.ID_alumno + '">' + alumno.nombre+ '</option>');
+                $('#alumno').append('<option value="' + alumno.id_alumno + '">' + alumno.nombre+ '</option>');
             });
         },
         error: function (error) {
@@ -147,20 +144,20 @@ function cargarAlumno() {
 }
 
 
-function cargarDocente() {
-  var alumnoSeleccionado = $('#alumno').val();
-  if (alumnoSeleccionado) {
+function cargardocente() {
+  var AlumnoSeleccionado = $('#alumno').val();
+  if (AlumnoSeleccionado) {
      
       $.ajax({
           url: '../ajax/docente.php',
           method: 'GET',
           dataType: 'json',  // Esperamos datos en formato JSON
-          data: { alumno: alumnoSeleccionado }, // Pasar la unidad académica seleccionada
+          data: { alumno: AlumnoSeleccionado }, // Pasar la unidad académica seleccionada
           success: function (data) {
             $('#docente').empty();
             // Agregar las opciones al select
             $.each(data, function (index, docente) {
-                $('#docente').append('<option value="' + docente.ID_Maestro + '">' + docente.nombre+ '</option>');
+                $('#docente').append('<option value="' + docente.id_docente + '">' + docente.nombre+ '</option>');
             });
         },
         error: function (error) {
@@ -171,4 +168,17 @@ function cargarDocente() {
     // Limpiar el select de carreras si no hay unidad académica seleccionada
     $('#docente').empty();
 }
+}
+
+function boton(){
+    var docente = $('#docente').val();
+
+    if(docente == null)
+    {
+        boton.disabled = true;
+    }
+    else
+    {
+        boton.disabled = false;
+    }
 }

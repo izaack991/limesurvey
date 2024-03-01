@@ -6,9 +6,9 @@ include 'conexion.php';
 // Escapar el valor de carrera para prevenir inyección SQL
 $carrera = $conn->real_escape_string($_GET['carrera']);
 
-$sql = "SELECT COUNT(DISTINCT ID_Semestre) AS Total_Semestres
-        FROM lime_UAIM_MateriaSemestre
-        WHERE ID_Carrera = $carrera";
+$sql = "SELECT COUNT(DISTINCT id_semestre) AS Total_Semestres
+        FROM lime_uaim_materiasemestre
+        WHERE id_carrera = $carrera";
 
 // Ejecutar la consulta
 $resultado = $conn->query($sql);
@@ -21,7 +21,7 @@ if ($resultado->num_rows > 0) {
 
     // Consulta preparada para evitar inyección SQL
     $sql2 = "SELECT *
-             FROM lime_UAIM_semestre
+             FROM lime_uaim_semestre
              
              LIMIT $total_semestres";
 
