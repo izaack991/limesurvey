@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
 
         // Comprobacion de inicio de sesion para alumno
         if($emaildominio[1] == true) {
-            $sql = "SELECT * FROM lime_uaim_alumno WHERE correo='$_usuario' and password='$_password'";
+            $sql = "SELECT * FROM lime_uaim_alumno WHERE correo=lower('$_usuario') and password='$_password'";
 
             $stmt = $conn->prepare($sql);
             $stmt->execute();
