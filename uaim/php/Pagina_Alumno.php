@@ -1,6 +1,28 @@
 <?php 
+<<<<<<< HEAD
 include '../ajax/php/verificacion_vacio.php';
 ?>
+=======
+include '../ajax/verificacion_vacio.php';
+
+//error_reporting(0);
+session_start();
+
+$validacion = $_SESSION['emaildominio'];
+$correo = $_SESSION['cuenta'];
+
+if ($correo == true){
+    if ($validacion == false) {
+        echo '"<script language="javascript">alert("Solo puedes ingresar con una cuenta de Alumno");window.location.href="../../login/login.php"</script>"';
+    }
+} else {
+    echo '"<script language="javascript">alert("No tienes una sesion iniciada");window.location.href="../../login/login"</script>"';
+}
+
+session_destroy();
+?>
+
+>>>>>>> 4121ffcb45cfa6b1c1d8a1e90c94d78ccbceb206
 <!DOCTYPE html>
 <html lang="es">
 <head>

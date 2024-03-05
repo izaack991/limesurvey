@@ -1,9 +1,11 @@
 <?php
+error_reporting(0);
+session_start();
 // Establece la conexión con la base de datos
 $servername = "localhost"; // Puede ser "localhost" si la base de datos está en el mismo servidor
 $username = "root";
 $password = "";
-$database = "prueba";
+$database = "unidad2";
 
 $conn = new mysqli($servername, $username, $password);
 
@@ -18,35 +20,60 @@ if ($result->num_rows > 0) {
     $conn = new mysqli($servername, $username, $password, $database);
 
     // Login
-    if (isset($_POST['matricula'])) {
+    if (isset($_POST['usuario'])&&isset($_POST['password'])) {     
+        $_usuario = $_POST['usuario'];
+        $_password = $_POST['password'];
+        
+        $_SESSION['cuenta'] = $_usuario;
+        
+        $emaildominio = explode('@', $_usuario);
 
-        $_usuario = $_POST['matricula'];
-        //$_password = $_POST['password'];
+        
+        // Comprobacion de inicio de sesion para alumno
+        if($emaildominio[1] == true) {
+            $sql = "SELECT * FROM lime_uaim_alumno WHERE correo=lower('$_usuario') and password='$_password'";
 
-        $sql = "SELECT * FROM alumno WHERE matricula='$_usuario'";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+    
+            $result = $stmt->get_result();
+    
+            if($result->num_rows > 0)
+            {
+                header("location:../../uaim/php/sesion_iniciada.php");
+            }
+            else
+            {
+                echo '"<script language="javascript">alert("Correo o contraseña incorrectos");window.location.href="../../login/login.php"</script>"';
+            }
+        // Comprobacion de inicio de sesion para docente
+        } else {
+            $sql = "SELECT * FROM lime_uaim_docente WHERE no_empleado='$_usuario' and password='$_password'";
 
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        $result = $stmt->get_result();
-
-        if($result->num_rows > 0)
-        {
-            header("location:../../juan_diego/php/Pagina_Alumno.php");
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+    
+            $result = $stmt->get_result();
+    
+            if($result->num_rows > 0)
+            {
+                header("location:../../uaim/php/sesion_iniciada.php");
+            }
+            else
+            {
+                echo '"<script language="javascript">alert("Correo o contraseña incorrectos");window.location.href="../../login/login.php"</script>"';
+            }
         }
-        else
-        {
-            echo '"<script language="javascript">alert("Matricula no encontrada");window.location.href="../../login/login2.php"</script>"';
-        }
+
     } else {
-        echo '"<script language="javascript">alert("Solo puedes ingresar con un correo institucional UAIM");window.location.href="../../login/login2.php"</script>"';
+        echo '"<script language="javascript">alert("Solo puedes ingresar con un correo institucional UAIM");window.location.href="../../login/login.php"</script>"';
     }
 
 // Cierra la conexión
 $conn->close();
 
 } else {
-    echo '"<script language="javascript">alert("Error en la base de datos. Base de datos no encontrada");window.location.href="../../login/login2.php"</script>"';
+    echo '"<script language="javascript">alert("Error en la base de datos. Base de datos no encontrada");window.location.href="../../login/login.php"</script>"';
 }
 
 

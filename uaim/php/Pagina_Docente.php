@@ -1,3 +1,21 @@
+<?php 
+error_reporting(0);
+session_start();
+
+$validacion = $_SESSION['emaildominio'];
+$correo = $_SESSION['cuenta'];
+
+if ($correo == true){
+    if ($validacion == true) {
+        echo '"<script language="javascript">alert("Solo puedes ingresar con una cuenta de docente");window.location.href="../../login/login.php"</script>"';
+    }
+} else {
+    echo '"<script language="javascript">alert("No tienes una sesion iniciada");window.location.href="../../login/login"</script>"';
+}
+
+session_destroy();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
