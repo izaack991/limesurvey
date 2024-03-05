@@ -6,7 +6,7 @@ include 'conexion.php';
 // Escapar el valor de carrera para prevenir inyección SQL
 $carrera = $conn->real_escape_string($_GET['carrera']);
 
-$sql = "SELECT COUNT(DISTINCT id_semestre) AS Total_Semestres
+$sql = "SELECT MAX(id_semestre) AS Total_Semestres
         FROM lime_uaim_materiasemestre
         WHERE id_carrera = $carrera";
 

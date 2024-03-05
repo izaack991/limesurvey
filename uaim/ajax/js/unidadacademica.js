@@ -36,7 +36,6 @@ $(document).ready(function() {
             data: { unidadacademica: unidadseleccionada }, // Pasar la unidad académica seleccionada
             success: function (data) {
                 $('#carrera').empty();
-                $('#semestre').empty();
                 $('#grupo').empty();
                 $('#alumno').empty();
                 $('#docente').empty();
@@ -65,7 +64,6 @@ $(document).ready(function() {
             dataType: 'json',  // Esperamos datos en formato JSON
             data: { carrera: CarreraSeleccionada }, // Pasar la unidad académica seleccionada
             success: function (data) {
-                $('#semestre').empty();
                 $('#grupo').empty();
                 $('#alumno').empty();
                 $('#docente').empty();

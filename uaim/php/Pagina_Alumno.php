@@ -1,9 +1,4 @@
 <?php 
-<<<<<<< HEAD
-include '../ajax/php/verificacion_vacio.php';
-?>
-=======
-include '../ajax/verificacion_vacio.php';
 
 //error_reporting(0);
 session_start();
@@ -22,7 +17,6 @@ if ($correo == true){
 session_destroy();
 ?>
 
->>>>>>> 4121ffcb45cfa6b1c1d8a1e90c94d78ccbceb206
 <!DOCTYPE html>
 <html lang="es">
 <head>
