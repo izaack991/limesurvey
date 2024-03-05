@@ -767,7 +767,7 @@ class TemplateConfig extends CActiveRecord
         $aClassAndAttributes['attr']['savebutton']            = ' type="submit" value="saveall" name="saveall" ';
 
         $aClassAndAttributes['attr']['navigatorbuttonprev']   = ' id="ls-button-previous" type="submit" value="moveprev" name="move" ';
-        $aClassAndAttributes['attr']['navigatorbuttonsubmit'] = ' id="ls-button-submit" type="submit" value="movesubmit" name="move" onclick="mostrarAlerta()"';
+        $aClassAndAttributes['attr']['navigatorbuttonsubmit'] = ' id="ls-button-submit" type="submit" value="movesubmit" name="move" onclick="insertar()"';
         $aClassAndAttributes['attr']['navigatorbuttonnext']   = ' id="ls-button-submit" type="submit" value="movenext" name="move" ';
 
         // Index Menu

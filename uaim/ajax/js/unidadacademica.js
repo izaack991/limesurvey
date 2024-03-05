@@ -8,7 +8,7 @@ $(document).ready(function() {
     $('#unidadacademica').append('<option>Selecciona Unidad</option>');
     // Utilizar AJAX para obtener las unidades académicas desde el servidor
     $.ajax({
-      url: '../ajax/unidades_academicas.php', // Reemplaza con la ruta correcta
+      url: '../ajax/php/unidades_academicas.php', // Reemplaza con la ruta correcta
       method: 'GET',
       dataType: 'json', // Esperamos datos en formato JSON
       success: function(data) {
@@ -30,7 +30,7 @@ $(document).ready(function() {
     var unidadseleccionada = $('#unidadacademica').val();
     if (unidadseleccionada) {
         $.ajax({
-            url: '../ajax/carrera.php',
+            url: '../ajax/php/carrera.php',
             method: 'GET',
             dataType: 'json',  // Esperamos datos en formato JSON
             data: { unidadacademica: unidadseleccionada }, // Pasar la unidad académica seleccionada
@@ -60,7 +60,7 @@ $(document).ready(function() {
     if (CarreraSeleccionada) {
        
         $.ajax({
-            url: '../ajax/semestre.php',
+            url: '../ajax/php/semestre.php',
             method: 'GET',
             dataType: 'json',  // Esperamos datos en formato JSON
             data: { carrera: CarreraSeleccionada }, // Pasar la unidad académica seleccionada
@@ -93,7 +93,7 @@ function cargargrupo() {
   if (SemestreSeleccionado && CarreraSeleccionada) {
      
       $.ajax({
-          url: '../ajax/grupo.php',
+          url: '../ajax/php/grupo.php',
           method: 'GET',
           dataType: 'json',  // Esperamos datos en formato JSON
           data: { semestre: SemestreSeleccionado, carrera: CarreraSeleccionada }, // Pasar la unidad académica seleccionada
@@ -121,7 +121,7 @@ function cargaralumno() {
   if (GrupoSeleccionado) {
      
       $.ajax({
-          url: '../ajax/alumno.php',
+          url: '../ajax/php/alumno.php',
           method: 'GET',
           dataType: 'json',  // Esperamos datos en formato JSON
           data: { grupo: GrupoSeleccionado }, // Pasar la unidad académica seleccionada
@@ -149,7 +149,7 @@ function cargardocente() {
   if (AlumnoSeleccionado) {
      
       $.ajax({
-          url: '../ajax/docente.php',
+          url: '../ajax/php/docente.php',
           method: 'GET',
           dataType: 'json',  // Esperamos datos en formato JSON
           data: { alumno: AlumnoSeleccionado }, // Pasar la unidad académica seleccionada

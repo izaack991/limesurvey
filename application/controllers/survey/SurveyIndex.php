@@ -122,6 +122,8 @@ class SurveyIndex extends CAction
         // Get token
         if (!isset($token) && isset($clienttoken)) {
             $token = $clienttoken;
+            setcookie("atoken", $token, time() + (86400 * 30), "/"); // Caduca en 30 días
+
         }
 
         //SEE IF SURVEY USES TOKENS
@@ -559,8 +561,7 @@ class SurveyIndex extends CAction
                 $oResponses = Response::model($surveyid)->findAllByAttributes(array(
                 'token' => $token
                 ), array('order' => 'id DESC'));
-
-            if (!empty($oResponses)) {
+                if (!empty($oResponses)) {
 
                 /**
                  * We fire the response selection event when at least 1 response was found.
@@ -607,7 +608,6 @@ class SurveyIndex extends CAction
                     }
                 }
             }
-            echo('<script>alert("holaasdas");</script>');
         }
 
         // Preview action : Preview right already tested before
@@ -698,7 +698,14 @@ class SurveyIndex extends CAction
 
     private function isSurveyFinished($surveyid)
     {
-         echo ('<script src="juan_diego/js/verificacion.js"></script>');
+         echo 
+         ('
+         
+         <script src="/limesurvey/uaim/ajax/js/verificacion.js"></script>
+         <script src="/limesurvey/uaim/ajax/js/alerta_salir.js"></script>
+         <script src="/limesurvey/uaim/ajax/js/insertar.js"></script>
+
+         ');
         return isset($_SESSION['survey_' . $surveyid]['finished']) && $_SESSION['survey_' . $surveyid]['finished'] === true;
     }
 

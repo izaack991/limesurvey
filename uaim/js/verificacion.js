@@ -1,2 +1,0 @@
-function mostrarAlerta() {
-    alert("yaestahecho")}

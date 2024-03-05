@@ -42,5 +42,4 @@ if ($resultado->num_rows > 0) {
 } else {
     echo "No se encontraron resultados.";
 }
-
 ?>
