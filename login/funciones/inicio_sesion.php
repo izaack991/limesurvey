@@ -1,5 +1,6 @@
 <?php
 error_reporting(0);
+session_start();
 // Establece la conexión con la base de datos
 $servername = "localhost"; // Puede ser "localhost" si la base de datos está en el mismo servidor
 $username = "root";
@@ -19,13 +20,15 @@ if ($result->num_rows > 0) {
     $conn = new mysqli($servername, $username, $password, $database);
 
     // Login
-    if (isset($_POST['usuario'])&&isset($_POST['password'])) {
-
+    if (isset($_POST['usuario'])&&isset($_POST['password'])) {     
         $_usuario = $_POST['usuario'];
         $_password = $_POST['password'];
-
+        
+        $_SESSION['cuenta'] = $_usuario;
+        
         $emaildominio = explode('@', $_usuario);
 
+        
         // Comprobacion de inicio de sesion para alumno
         if($emaildominio[1] == true) {
             $sql = "SELECT * FROM lime_uaim_alumno WHERE correo=lower('$_usuario') and password='$_password'";
@@ -37,7 +40,7 @@ if ($result->num_rows > 0) {
     
             if($result->num_rows > 0)
             {
-                header("location:../../uaim/php/Pagina_Alumno.php");
+                header("location:../../uaim/php/sesion_iniciada.php");
             }
             else
             {
@@ -54,7 +57,7 @@ if ($result->num_rows > 0) {
     
             if($result->num_rows > 0)
             {
-                header("location:../../uaim/php/Pagina_Docente.php");
+                header("location:../../uaim/php/sesion_iniciada.php");
             }
             else
             {
