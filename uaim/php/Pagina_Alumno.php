@@ -14,7 +14,6 @@ if ($correo == true){
     echo '"<script language="javascript">alert("No tienes una sesion iniciada");window.location.href="../../login/login"</script>"';
 }
 
-session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -77,6 +76,7 @@ session_destroy();
                 <option value=""></option>
                 </select>
               </div>
+              <input type="hidden" id="tipo_encuesta" name="tipo_encuesta" value="1">
 
               <button type="submit" id="enviar" class="btn btn-primary">Enviar</button>
             </form>

@@ -5,21 +5,26 @@ INSERT INTO lime_uaim_semestre (nombre) VALUES ('Primer Semestre'),('Segundo Sem
 INSERT INTO lime_uaim_carrera (nombre, id_unidadAcademica) VALUES ('Licenciatura en Contaduria','1');
 INSERT INTO lime_uaim_grupo (nombre, id_carrera, id_semestre) VALUES ('CONT01','1','6');
 INSERT INTO lime_uaim_materia (nombre) VALUES ('Contabilidad de sociedades y especiales');
+insert into lime_uaim_rol values ('1','Docente');
+insert into lime_uaim_rol values ('2','Tutor');
+insert into lime_uaim_rol values ('3','Cordinadora de Programa Educativo');
+insert into lime_uaim_rol values ('4','Jefe de Seccion Academica');
 
-INSERT INTO lime_uaim_docente (nombre, apellido, no_empleado, password) VALUES ('Roberto', 'Ramírez Acosta','70352','RRAM352');
-INSERT INTO lime_uaim_docente (nombre, apellido, no_empleado, password) VALUES ('Brenda Edith', 'Gutiérrez Herrera','756','BGUT756');
-INSERT INTO lime_uaim_docente (nombre, apellido, no_empleado, password) VALUES ('Isabel Cristina', 'Cristerna Soto','697','ICRI697');
-INSERT INTO lime_uaim_docente (nombre, apellido, no_empleado, password) VALUES ('María del Carmen', 'Fierro González','160','MFIE160');
-INSERT INTO lime_uaim_docente (nombre, apellido, no_empleado, password) VALUES ('María Trinidad', 'Gastelum Mendoza','8683','MGAS683');
+INSERT INTO lime_uaim_docente (no_empleado,id_rol, nombre, apellido, password) VALUES ('70352','4','Roberto', 'Ramírez Acosta','RRAM352');
+INSERT INTO lime_uaim_docente (no_empleado,id_rol, nombre, apellido, password) VALUES ('756','3','Brenda Edith', 'Gutiérrez Herrera','BGUT756');
+INSERT INTO lime_uaim_docente (no_empleado,id_rol, nombre, apellido, password) VALUES ('697','1','Isabel Cristina', 'Cristerna Soto','ICRI697');
+INSERT INTO lime_uaim_docente (no_empleado,id_rol, nombre, apellido, password) VALUES ('160','1','María del Carmen', 'Fierro González','MFIE160');
+INSERT INTO lime_uaim_docente (no_empleado,id_rol, nombre, apellido, password) VALUES ('8683','1','María Trinidad', 'Gastelum Mendoza','MGAS683');
+
+INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020214','Jesús Annaly', 'Leyva Osorio',lower('Leyvaosorioannaly@gmail.com'),'JLEY0214','1');
+INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020218','Angie Fabiola', 'Suarez Reyes',lower('Angiefabiolasuarez@gmail.com'),'ASUA0218','1');
+INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('Rosa Emma', 'Cruz Fernandez','22020234',lower('cruzfern1113@gmail.com'),'RCRU0234','1');
+INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020258','Cristian Oswaldo', 'Ramos Rojas',lower('cristianosw2002@gmail.com'),'CRAM0258','1');
+INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020244','Jesús Manuel', 'Soberanes Vizcarra',lower('Soberanesvizcarrajesus@gmail.com'),'JSOB0244','1');
+INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020210','Jesse Karolina', 'Segundo Lerma ',lower('karojesse001@gmail.com'),'JSEG0210','1');
+INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020251','Hanna Fabiola', 'Mendez Camacho',lower('hannafabiola003@gmail.com'),'HMEN0251','1');
+INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020309','Juan Carlos', 'Alvarez Leyva',lower('juanfullbuster1428@gmail.com'),'JALV0309','1');
+
 
 INSERT INTO lime_uaim_materiasemestre (id_semestre,id_carrera,id_materia) VALUES (6,1,1);
-INSERT INTO lime_uaim_docentemateria (id_docente,id_materiaSemestre,id_grupo) VALUES (3,1,1);
-
-INSERT INTO lime_uaim_alumno (nombre, apellido, matricula, correo, password, id_grupo) VALUES ('Jesús Annaly', 'Leyva Osorio','22020214',lower('Leyvaosorioannaly@gmail.com'),'JLEY0214','1');
-INSERT INTO lime_uaim_alumno (nombre, apellido, matricula, correo, password, id_grupo) VALUES ('Angie Fabiola', 'Suarez Reyes','22020218',lower('Angiefabiolasuarez@gmail.com'),'ASUA0218','1');
-INSERT INTO lime_uaim_alumno (nombre, apellido, matricula, correo, password, id_grupo) VALUES ('Rosa Emma', 'Cruz Fernandez','22020234',lower('cruzfern1113@gmail.com'),'RCRU0234','1');
-INSERT INTO lime_uaim_alumno (nombre, apellido, matricula, correo, password, id_grupo) VALUES ('Cristian Oswaldo', 'Ramos Rojas','22020258',lower('cristianosw2002@gmail.com'),'CRAM0258','1');
-INSERT INTO lime_uaim_alumno (nombre, apellido, matricula, correo, password, id_grupo) VALUES ('Jesús Manuel', 'Soberanes Vizcarra','22020244',lower('Soberanesvizcarrajesus@gmail.com'),'JSOB0244','1');
-INSERT INTO lime_uaim_alumno (nombre, apellido, matricula, correo, password, id_grupo) VALUES ('Jesse Karolina', 'Segundo Lerma ','22020210',lower('karojesse001@gmail.com'),'JSEG0210','1');
-INSERT INTO lime_uaim_alumno (nombre, apellido, matricula, correo, password, id_grupo) VALUES ('Hanna Fabiola', 'Mendez Camacho','22020251',lower('hannafabiola003@gmail.com'),'HMEN0251','1');
-INSERT INTO lime_uaim_alumno (nombre, apellido, matricula, correo, password, id_grupo) VALUES ('Juan Carlos', 'Alvarez Leyva','22020309',lower('juanfullbuster1428@gmail.com'),'JALV0309','1');
+INSERT INTO lime_uaim_docentemateria (no_empleado,id_materiaSemestre,id_grupo) VALUES (756,1,1);

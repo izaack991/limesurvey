@@ -36,6 +36,7 @@ $(document).ready(function() {
             data: { unidadacademica: unidadseleccionada }, // Pasar la unidad académica seleccionada
             success: function (data) {
                 $('#carrera').empty();
+                $('#semestre').empty();
                 $('#grupo').empty();
                 $('#alumno').empty();
                 $('#docente').empty();
@@ -64,6 +65,7 @@ $(document).ready(function() {
             dataType: 'json',  // Esperamos datos en formato JSON
             data: { carrera: CarreraSeleccionada }, // Pasar la unidad académica seleccionada
             success: function (data) {
+                $('#semestre').empty();
                 $('#grupo').empty();
                 $('#alumno').empty();
                 $('#docente').empty();
@@ -128,7 +130,7 @@ function cargaralumno() {
             $('#docente').empty();
             // Agregar las opciones al select
             $.each(data, function (index, alumno) {
-                $('#alumno').append('<option value="' + alumno.id_alumno + '">' + alumno.nombre+ '</option>');
+                $('#alumno').append('<option value="' + alumno.matricula + '">' + alumno.nombre+ '</option>');
             });
         },
         error: function (error) {
@@ -155,7 +157,7 @@ function cargardocente() {
             $('#docente').empty();
             // Agregar las opciones al select
             $.each(data, function (index, docente) {
-                $('#docente').append('<option value="' + docente.id_docente + '">' + docente.nombre+ '</option>');
+                $('#docente').append('<option value="' + docente.no_empleado + '">' + docente.nombre+ '</option>');
             });
         },
         error: function (error) {

@@ -123,7 +123,7 @@ class SurveyIndex extends CAction
         if (!isset($token) && isset($clienttoken)) {
             $token = $clienttoken;
             setcookie("atoken", $token, time() + (86400 * 30), "/"); // Caduca en 30 días
-
+            //print_r($_SESSION);
         }
 
         //SEE IF SURVEY USES TOKENS

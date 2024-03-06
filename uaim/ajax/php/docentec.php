@@ -1,18 +1,19 @@
 <?php
 // Agrega el archivo que contiene la conexion a la base de datos 
 include 'conexion.php';
-// Obtiene el valor del select con dicho ID
-$alumno = $_GET['alumno'];
+session_start();
+$docentec = $_SESSION['cuenta'];
 // Regresa el docente dependiendo el alumno, esta consulta hace dos validaciones 
 //que el alumno este en el grupo a cual da clases y si el alumno ya a calificado al docente
-$sql = "SELECT DISTINCT ma.no_empleado as no_empleado, ma.nombre as nombre
-FROM lime_uaim_docente as ma
-LEFT JOIN lime_uaim_docentemateria as mm ON ma.no_empleado = mm.no_empleado
-LEFT JOIN lime_uaim_grupo as gr ON mm.id_grupo = gr.id_grupo
-LEFT JOIN lime_uaim_encuesta en ON ma.no_empleado = en.id_evaluado
-WHERE (en.id_evaluador IS NULL OR en.id_evaluador <> $alumno )
-AND gr.id_grupo = (SELECT id_grupo FROM lime_uaim_alumno WHERE matricula = $alumno);
-";
+$sql = "SELECT d.no_empleado, d.nombre, d.apellido
+FROM lime_uaim_docente d
+WHERE d.id_rol = 3 -- El ID del rol del coordinador
+AND NOT EXISTS (
+    SELECT 1
+    FROM lime_uaim_encuesta e
+    WHERE e.id_evaluado = d.no_empleado
+    AND e.id_evaluador = $docentec -- Verifica que el maestro actual ya no haya calificado al coordinador
+);";
 
 $result = $conn->query($sql);
 // Guarda las filas de la encuesta en un arreglo
@@ -22,8 +23,10 @@ if ($result->num_rows > 0) {
         $resultados[] = $row;
     }
 }
+else{echo $resultados;}
 $conn->close();
 //regresa los resultados
 echo json_encode($resultados);
+$_SESSION['tipo_encuesta'] = 3;
 
 ?>

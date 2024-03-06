@@ -40,8 +40,7 @@ ALTER TABLE lime_uaim_grupo AUTO_INCREMENT = 1;
 
 -- Crear tabla Alumno
 CREATE TABLE lime_uaim_alumno (
-    id_alumno INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(255) NOT NULL,
+    nombre VARCHAR(255) primary key NOT NULL,
     apellido VARCHAR(255) NOT NULL,
     matricula VARCHAR(8) NOT NULL UNIQUE,
     correo VARCHAR(255) NOT NULL UNIQUE,
@@ -49,17 +48,19 @@ CREATE TABLE lime_uaim_alumno (
     id_grupo INT NOT NULL,
     FOREIGN KEY (id_grupo) REFERENCES lime_uaim_grupo(id_grupo)
 );
-ALTER TABLE lime_uaim_alumno AUTO_INCREMENT = 1;
-
+create table lime_uaim_rol(
+    id_rol int primary key not null,
+    nombre varchar(255)
+);
 -- Crear tabla Maestro
 CREATE TABLE lime_uaim_docente (
-    id_docente INT PRIMARY KEY AUTO_INCREMENT,
+    no_empleado varchar(25) PRIMARY KEY not null,
+    id_rol int,
     nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
-    no_empleado VARCHAR(10) NOT NULL UNIQUE,
-	password varchar(255) NOT NULL 
+	password varchar(255) NOT NULL,
+    FOREIGN KEY (id_rol) REFERENCES lime_uaim_rol(id_rol)
 );
-ALTER TABLE lime_uaim_docente AUTO_INCREMENT = 1;
 
 -- Crear tabla Materia
 CREATE TABLE lime_uaim_materia (
@@ -82,20 +83,19 @@ ALTER TABLE lime_uaim_materiaSemestre AUTO_INCREMENT = 1;
 
 -- Crear tabla intermedia MaestroMateria
 CREATE TABLE lime_uaim_docenteMateria (
-    id_docente INT NOT NULL,
+    no_empleado varchar(25) NOT NULL,
     id_materiaSemestre INT NOT NULL,
     id_grupo INT NOT NULL,
-    FOREIGN KEY (id_docente) REFERENCES lime_uaim_docente(id_docente),
+    FOREIGN KEY (no_empleado) REFERENCES lime_uaim_docente(no_empleado),
     FOREIGN KEY (id_grupo) REFERENCES lime_uaim_grupo(id_grupo),
     FOREIGN KEY (id_materiaSemestre) REFERENCES lime_uaim_materiaSemestre(id_materiaSemestre)
 );
-ALTER TABLE lime_uaim_docenteMateria AUTO_INCREMENT = 1;
 
 create table lime_uaim_encuesta (
     token varchar (50),
     id_encuesta int,
-    id_evaluador int,
-    id_evaluado int,
+    id_evaluador varchar(25) not null,
+    id_evaluado varchar(25) not null,
     fecha date,
     id_unidadAcademica int NOT NULL,
     id_carrera int NOT NULL,
@@ -106,7 +106,6 @@ create table lime_uaim_encuesta (
     FOREIGN KEY (id_semestre) REFERENCES lime_uaim_semestre(id_semestre),
     FOREIGN KEY (id_grupo) REFERENCES lime_uaim_grupo(id_grupo)
 );
-ALTER TABLE lime_uaim_encuesta AUTO_INCREMENT = 1;
 
 
 -- DROP DATABASE unidad2;
