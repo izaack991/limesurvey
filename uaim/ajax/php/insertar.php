@@ -11,18 +11,23 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-
+session_start();
 $conn->set_charset("utf8");
 $atoken = $_COOKIE['atoken'];
 $tipo_encuesta = $_SESSION['tipo_encuesta'];
-if( $tipo_encuesta== 1) {
-    session_start();
+if( $_SESSION['no_empleado'])
+{
+    $docente1 = $_SESSION['no_empleado'];
+}
+
+if( $tipo_encuesta== 1)
+{
     $docente = $_SESSION['docente'];
     $id_unidadAcademica = $_SESSION['unidadacademica'] ;
     $id_carrera = $_SESSION['carrera'];
     $id_semestre = $_SESSION['semestre'];
-    $matricula = $_SESSION['matricula'] ;
-    $correo = $_SESSION['correo'] ;
+    $matricula = $_SESSION['alumno'];
+    $correo = $_SESSION['cuenta'];
     $grupo = $_SESSION['grupo'] ;
     ////////////////////////////////////////////////////////////////////////////////////////////////
     $sql = "SELECT MAX(id) AS id
@@ -47,12 +52,51 @@ if( $tipo_encuesta== 1) {
         // Cerrar la conexión
         $sql3 = "INSERT INTO lime_uaim_encuesta (token, id_evaluador, id_evaluado, fecha, id_unidadAcademica, id_carrera, id_semestre, id_grupo) VALUES ('$atoken', '$matricula', '$docente', NOW(), $id_unidadAcademica, $id_carrera, $id_semestre, $grupo)";
     
-    
         $resultado = $conn->query($sql3);
         $conn->close();
     } else {
         echo "No se encontraron resultados.";
     }
     echo('<script>alert("asdasdas")</script>');
+} 
+else if($tipo_encuesta == 2)
+{
+            include 'conexion.php';
+        // Cerrar la conexión
+        $sql3 = "INSERT INTO lime_uaim_encuesta (token, id_evaluador, id_evaluado, fecha, id_unidadAcademica, id_carrera, id_semestre, id_grupo) VALUES ('$atoken', '$matricula', '$docente', NOW(), $id_unidadAcademica, $id_carrera, $id_semestre, $grupo)";
+    
+        $conn->query($sql3);
+        $conn->close();
 }
+else if($tipo_encuesta == 3)
+{
+    include 'conexion.php';
+    // Cerrar la conexión
+    $sql3 = "INSERT INTO lime_uaim_encuesta (token, id_evaluador, id_evaluado, fecha) VALUES ('1', '$docente1', '$docente', NOW())";
+
+    $conn->query($sql3);
+    $conn->close();
+}
+else if($tipo_encuesta == 4)
+{
+    include 'conexion.php';
+    // Cerrar la conexión
+    $sql3 = "INSERT INTO lime_uaim_encuesta (token, id_evaluador, id_evaluado, fecha) VALUES ('2', '$docente1', '$docente', NOW())";
+
+    $conn->query($sql3);
+    $conn->close();
+}
+else if($tipo_encuesta == 5) 
+{
+    include 'conexion.php';
+    // Cerrar la conexión
+    $sql3 = "INSERT INTO lime_uaim_encuesta (token, id_evaluador, id_evaluado, fecha) VALUES ('3', '$docente1', '$docente', NOW())";
+    $conn->query($sql3);
+    $conn->close();
+}
+else
+{
+    echo'no se encontro el tipo de evaluacion';
+}
+
 ?>
