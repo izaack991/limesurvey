@@ -1,4 +1,9 @@
 USE unidad2;
+INSERT INTO lime_uaim_tipoE value(1,'Alumno-Docente');
+INSERT INTO lime_uaim_tipoE value(2,'Autoevaluacion');
+INSERT INTO lime_uaim_tipoE value(3,'Cordinador-Docente');
+INSERT INTO lime_uaim_tipoE value(4,'Jefe de Seccion academica-Docente');
+INSERT INTO lime_uaim_tipoE value(5,'Evaluacion Par');
 
 INSERT INTO lime_uaim_unidadacademica (nombre,direccion,telefono) VALUES ('Unidad Los Mochis','Los Mochis','6871234556');
 INSERT INTO lime_uaim_semestre (nombre) VALUES ('Primer Semestre'),('Segundo Semestre'),('Tercer Semestre'),('Cuarto Semestre'),('Quinto Semestre'),('Sexto Semestre'),('Septimo Semestre'),('Octavo Semestre'),('Noveno Semestre');
