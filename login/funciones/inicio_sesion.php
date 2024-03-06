@@ -54,7 +54,15 @@ if ($result->num_rows > 0) {
             $stmt->execute();
     
             $result = $stmt->get_result();
-    
+            $info_docente = $result->fetch_assoc();
+
+            $_SESSION['no_empleado'] = $info_docente['no_empleado'];
+            $_SESSION['docente_nombre'] = $info_docente['nombre'];
+            $_SESSION['docente_apellido'] = $info_docente['apellido'];
+            $_SESSION['tipo_empleado'] = $info_docente['id_rol'];
+            $_SESSION['es_tutor'] = $info_docente['es_tutor'];
+            $_SESSION['es_docente'] = $info_docente['es_docente'];
+
             if($result->num_rows > 0)
             {
                 header("location:../../uaim/php/sesion_iniciada.php");
