@@ -27,4 +27,4 @@ INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_g
 INSERT INTO lime_uaim_materiasemestre (id_semestre,id_carrera,id_materia) VALUES (6,1,1);
 INSERT INTO lime_uaim_docentemateria (no_empleado,id_materiaSemestre,id_grupo) VALUES (756,1,1);
 
-INSERT INTO lime_uaim_tutorgrupo (no_empleado,id_grupo) VALUES ('697','1')
+INSERT INTO lime_uaim_tutorgrupo (no_empleado,id_grupo) VALUES ('697','1');

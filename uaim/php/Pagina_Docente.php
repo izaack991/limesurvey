@@ -33,11 +33,43 @@ if ($correo == true){
         <div class="mb-3">
             <label for="tipoEncuesta" class="form-label">Selecciona el tipo de encuesta:</label>
             <select class="form-select" id="tipoEncuesta" name="tipoEncuesta" onclick="mostrarContenido()">
-                <option value="seleccion_1">Autoevaluacion 1</option>
-                <option value="seleccion_2">Evaluacion Docente Cordinador</option>
-                <option value="seleccion_3">Evaluacion Jefe De Seccion Academica 3</option>
-                <option value="seleccion_4">Evaluacion Pares 4</option>
+                <option value="seleccion_1" id="es_docente1">Autoevaluacion 1</option>
+                <option value="seleccion_2" id="es_coordinador">Evaluacion Docente Cordinador</option>
+                <option value="seleccion_3" id="es_jefeseccion">Evaluacion Jefe De Seccion Academica</option>
+                <option value="seleccion_4" id="es_docente">Evaluacion Pares 4</option>
             </select>
+
+            <script>
+            // Obtener el valor de la variable de sesión en JavaScript
+            var tipo_empleado = <?php echo json_encode($_SESSION['tipo_empleado']); ?>;
+            var es_docente = <?php echo json_encode($_SESSION['es_docente']); ?>;
+
+            // Lógica condicional con JavaScript
+            if (tipo_empleado == '1') {
+                // Ocultar la opción cambiando el estilo
+                if(es_docente == '1') {
+                    document.getElementById('es_coordinador').style.display = 'none';
+                    document.getElementById('es_jefeseccion').style.display = 'none';
+                }
+            }
+            if (tipo_empleado == '2') {
+                // Ocultar la opción cambiando el estilo
+                document.getElementById('es_jefeseccion').style.display = 'none';
+                if(es_docente == '0') {
+                    document.getElementById('es_docente1').style.display = 'none';
+                    document.getElementById('es_docente').style.display = 'none';
+                }
+            }
+            if (tipo_empleado == '3') {
+                // Ocultar la opción cambiando el estilo
+                document.getElementById('es_coordinador').style.display = 'none';
+                if (es_docente == '0') {
+                    document.getElementById('es_docente1').style.display = 'none';
+                    document.getElementById('es_docente').style.display = 'none';
+                }
+            }
+            </script>
+
         </div>
         <div id="contenidoSeleccionado" class="mt-3">
             <!-- Aquí se mostrará el contenido seleccionado -->

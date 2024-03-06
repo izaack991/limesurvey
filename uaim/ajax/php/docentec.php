@@ -6,7 +6,7 @@ $docentec = $_SESSION['cuenta'];
 // Regresa el docente dependiendo el alumno, esta consulta hace dos validaciones 
 //que el alumno este en el grupo a cual da clases y si el alumno ya a calificado al docente
 $sql = "SELECT d.no_empleado, d.nombre, d.apellido
-FROM lime_uaim_docente d
+FROM lime_uaim_empleado d
 WHERE d.id_rol = 3 -- El ID del rol del coordinador
 AND NOT EXISTS (
     SELECT 1

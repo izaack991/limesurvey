@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 session_start();
 // Establece la conexión con la base de datos
 $servername = "localhost"; // Puede ser "localhost" si la base de datos está en el mismo servidor
@@ -48,7 +48,7 @@ if ($result->num_rows > 0) {
             }
         // Comprobacion de inicio de sesion para docente
         } else {
-            $sql = "SELECT * FROM lime_uaim_docente WHERE no_empleado='$_usuario' and password='$_password'";
+            $sql = "SELECT * FROM lime_uaim_empleado WHERE no_empleado='$_usuario' and password='$_password'";
 
             $stmt = $conn->prepare($sql);
             $stmt->execute();
