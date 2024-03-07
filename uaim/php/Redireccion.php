@@ -1,7 +1,9 @@
 <?php 
 session_start();
+//print_r($_SESSION);
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
+    unset($_SESSION['docente']);
     $length = 15; // Puedes ajustar esto según tus necesidades
     $id_respuesta = bin2hex(random_bytes($length));
     setcookie("id_respuesta", $id_respuesta, time() + (86400 * 30), "/");
@@ -67,10 +69,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     else if($tipo_encuesta == 5) 
     {
         echo"evaluacion par";
-        $docente = $_POST["docentep"];
+        $docentep = $_POST["docentep"];
         $_SESSION['docente'] = $docente;
-        echo $docente;
-        include '../ajax/php/insertar.php';
+        echo $docentep;
+        //include '../ajax/php/insertar.php';
     }
     else
     {

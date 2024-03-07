@@ -96,7 +96,7 @@ if ($correo == true){
         contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Evaluacion Docente Jefe de Seccion Academica</label><input type='hidden'name='tipo_encuesta' value='4'><select id='docentejsa'name='docentejsa' onclick='cargarjsa()'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
         break;
     case "seleccion_4":
-        contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Evaluacion Pares </label><input type='hidden'name='tipo_encuesta' value='5'><select id='docentep' name='docentep' onclick='cargarp()'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
+        contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Evaluacion Pares </label><input type='hidden'name='tipo_encuesta' value='5'><select id='docentep' name='docentep' onchange='cargarp()'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
         break;
     default:
         contenidoSeleccionado = "<p>Selección no válida.</p>";

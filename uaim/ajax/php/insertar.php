@@ -15,13 +15,13 @@ $conn->set_charset("utf8");
 session_start();
 $id_respuesta = $_COOKIE['id_respuesta'];
 $tipo_encuesta = $_SESSION['tipo_encuesta'];
-//if( $_SESSION['no_empleado'])
-//{
-    //$docente1 = $_SESSION['no_empleado'];
-//}
+$docente = $_SESSION['docente'];
+if( $_SESSION['no_empleado'])
+{
+    $docente1 = $_SESSION['no_empleado'];
+}
 if( $tipo_encuesta== 1)
 {
-    $docente = $_SESSION['docente'];
     $id_unidadAcademica = $_SESSION['unidadacademica'] ;
     $id_carrera = $_SESSION['carrera'];
     $id_semestre = $_SESSION['semestre'];
@@ -60,7 +60,7 @@ else if($tipo_encuesta == 2)
 {
             include 'conexion.php';
         // Cerrar la conexión
-        $sql3 = "INSERT INTO lime_uaim_encuesta (token, id_evaluador, id_evaluado, fecha, id_unidadAcademica, id_carrera, id_semestre, id_grupo) VALUES ('$atoken', '$matricula', '$docente', NOW(), $id_unidadAcademica, $id_carrera, $id_semestre, $grupo)";
+        $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','2', '$docente1', '$docente1', NOW())";
         $conn->query($sql3);
         $conn->close();
 }
@@ -68,7 +68,7 @@ else if($tipo_encuesta == 3)
 {
     include 'conexion.php';
     // Cerrar la conexión
-    $sql3 = "INSERT INTO lime_uaim_encuesta (token, id_evaluador, id_evaluado, fecha) VALUES ('1', '$docente1', '$docente', NOW())";
+    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','3', '$docente1', '$docente1', NOW())";
 
     $conn->query($sql3);
     $conn->close();
@@ -77,7 +77,7 @@ else if($tipo_encuesta == 4)
 {
     include 'conexion.php';
     // Cerrar la conexión
-    $sql3 = "INSERT INTO lime_uaim_encuesta (token, id_evaluador, id_evaluado, fecha) VALUES ('2', '$docente1', '$docente', NOW())";
+    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','4', '$docente1', '$docente1', NOW())";
 
     $conn->query($sql3);
     $conn->close();
@@ -86,7 +86,7 @@ else if($tipo_encuesta == 5)
 {
     include 'conexion.php';
     // Cerrar la conexión
-    $sql3 = "INSERT INTO lime_uaim_encuesta (token, id_evaluador, id_evaluado, fecha) VALUES ('3', '$docente1', '$docente', NOW())";
+    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','5', '$docente1', '$docente1', NOW())";
     $conn->query($sql3);
     $conn->close();
 }
