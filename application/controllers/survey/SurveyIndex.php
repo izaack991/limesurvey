@@ -720,7 +720,7 @@ try {
 }
 $id_respuesta = $_COOKIE['id_respuesta'];
 echo $id_respuesta;
-$sql = "SELECT MAX(id) AS id FROM lime_survey_595288 WHERE id_respuesta IS NULL AND NOT EXISTS (SELECT * FROM lime_survey_595288 WHERE id_respuesta = '$id_respuesta')";
+$sql = "SELECT MAX(id) AS id FROM lime_survey_$surveyid WHERE id_respuesta IS NULL AND NOT EXISTS (SELECT * FROM lime_survey_$surveyid WHERE id_respuesta = '$id_respuesta')";
 $resultado = $conn->query($sql);
 print_r($resultado);
 if ($resultado->num_rows > 0) {
@@ -729,7 +729,7 @@ if ($resultado->num_rows > 0) {
     $id = $fila['id'];
     if($id!= null){
     // Consulta preparada para evitar inyección SQL
-    $sql2 = "UPDATE lime_survey_595288 SET id_respuesta = '$id_respuesta'WHERE id = $id;";
+    $sql2 = "UPDATE lime_survey_$surveyid SET id_respuesta = '$id_respuesta'WHERE id = $id;";
     $conn->query($sql2);
     $conn->close();
         }else{echo'        no se encontro id :(';}

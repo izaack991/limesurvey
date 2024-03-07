@@ -48,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         echo"autoevaluacion";
         include '../ajax/php/insertar.php';
+        header("Location: http://localhost/limesurvey/index.php/616935?newtest=Y&lang=es");
     }
     else if($tipo_encuesta == 3)
     {
