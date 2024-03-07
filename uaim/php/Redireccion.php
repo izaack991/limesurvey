@@ -1,5 +1,4 @@
-<?php 
-session_start();
+<?php
 //print_r($_SESSION);
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {

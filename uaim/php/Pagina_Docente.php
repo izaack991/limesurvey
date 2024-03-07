@@ -32,7 +32,7 @@ if ($correo == true){
         <h5 class="card-title">Evaluación Docente.</h5>
         <div class="mb-3">
             <label for="tipoEncuesta" class="form-label">Selecciona el tipo de encuesta:</label>
-            <select class="form-select" id="tipoEncuesta" name="tipoEncuesta" onclick="mostrarContenido()">
+            <select class="form-select" id="tipoEncuesta" name="tipoEncuesta" onclick="mostrarContenido(),cargara(),cargarc(),cargarjsa(),cargarp()">
                 <option value="seleccion_1" id="es_docente1">Autoevaluacion 1</option>
                 <option value="seleccion_2" id="es_coordinador">Evaluacion Docente Cordinador</option>
                 <option value="seleccion_3" id="es_jefeseccion">Evaluacion Jefe De Seccion Academica</option>
@@ -87,16 +87,16 @@ if ($correo == true){
 
         switch (tipoEncuesta) {
     case "seleccion_1":
-        contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Auto Evaluacion </label><input type='hidden'name='tipo_encuesta' value='2'><select id='docentea' name='docentea' onclick='cargara()'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
+        contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Auto Evaluacion </label><input type='hidden'name='tipo_encuesta' value='2'><select id='docentea' name='docentea'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
         break;
     case "seleccion_2":
-        contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Evaluacion Docente Coordinador P.E</label><input type='hidden'name='tipo_encuesta' value='3'><select id='docentec' name='docentec' onclick='cargarc()'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
+        contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Evaluacion Docente Coordinador P.E</label><input type='hidden'name='tipo_encuesta' value='3'><select id='docentec' name='docentec'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
         break;
     case "seleccion_3":
-        contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Evaluacion Docente Jefe de Seccion Academica</label><input type='hidden'name='tipo_encuesta' value='4'><select id='docentejsa'name='docentejsa' onclick='cargarjsa()'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
+        contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Evaluacion Docente Jefe de Seccion Academica</label><input type='hidden'name='tipo_encuesta' value='4'><select id='docentejsa'name='docentejsa'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
         break;
     case "seleccion_4":
-        contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Evaluacion Pares </label><input type='hidden'name='tipo_encuesta' value='5'><select id='docentep' name='docentep' onchange='cargarp()'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
+        contenidoSeleccionado = '<form action="Redireccion.php" method="post"><label> Evaluacion Pares </label><input type="hidden" name="tipo_encuesta" value="5"><select id="docentep" name="docentep"><option value="">Seleccionar docente</option></select><button type="submit" id="enviar" class="btn btn-primary">Enviar</button></form>';
         break;
     default:
         contenidoSeleccionado = "<p>Selección no válida.</p>";
