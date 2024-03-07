@@ -2,6 +2,9 @@
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
+    $length = 15; // Puedes ajustar esto según tus necesidades
+    $id_respuesta = bin2hex(random_bytes($length));
+    setcookie("id_respuesta", $id_respuesta, time() + (86400 * 30), "/");
     $tipo_encuesta = $_POST["tipo_encuesta"];
     $_SESSION['tipo_encuesta'] =$tipo_encuesta;
     if($tipo_encuesta == 1)
@@ -38,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         //}
         //$conn->close();
 
-        header("Location: http://localhost/limesurvey/index.php/291758?newtest=Y&amp;lang=es");
+        header("Location: http://localhost/limesurvey/index.php/595288?newtest=Y&lang=es");
     }
     else if($tipo_encuesta == 2)
     {

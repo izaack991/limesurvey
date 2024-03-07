@@ -122,7 +122,7 @@ class SurveyIndex extends CAction
         // Get token
         if (!isset($token) && isset($clienttoken)) {
             $token = $clienttoken;
-            setcookie("atoken", $token, time() + (86400 * 30), "/"); // Caduca en 30 días
+            //setcookie("atoken", $token, time() + (86400 * 30), "/"); // Caduca en 30 días
             //print_r($_SESSION);
         }
 
@@ -706,7 +706,33 @@ class SurveyIndex extends CAction
          <script src="/limesurvey/uaim/ajax/js/insertar.js"></script>
 
          ');
-        return isset($_SESSION['survey_' . $surveyid]['finished']) && $_SESSION['survey_' . $surveyid]['finished'] === true;
+         $servername = "localhost";  // Cambia esto si tu servidor de base de datos está en otro lugar
+         $username = "root";         // Usuario por defecto en XAMPP
+         $password = "";             // Contraseña por defecto en XAMPP
+         $dbname = "limesurveydb";         // Nombre de tu base de datos
+         $conn->set_charset("utf8");
+         $conn = new mysqli($servername, $username, $password, $dbname);
+         $id_respuesta = $_COOKIE['id_respuesta'];
+         $sql = "SELECT MAX(id) AS id
+         FROM lime_survey_595288
+         WHERE id_respuesta = 0";
+         $resultado = $conn->query($sql);
+         print_r($_SESSION);
+         // Verificar si se encontraron resultados
+         if ($resultado->num_rows > 0) {
+             // Obtener el resultado como un valor único
+             $fila = $resultado->fetch_assoc();
+             $id = $fila['id'];
+         
+             // Consulta preparada para evitar inyección SQL
+             $sql2 = "UPDATE lime_survey_595288
+             SET id_respuesta = '$id_respuesta'
+             WHERE id = $id ";
+             $conn->query($sql2);
+             $conn->close();
+             include 'conexion.php';
+             $conn->query($sql);
+         return isset($_SESSION['survey_' . $surveyid]['finished']) && $_SESSION['survey_' . $surveyid]['finished'] === true;
     }
 
     private function surveyCantBeViewedWithCurrentPreviewAccess($surveyid, $bIsSurveyActive, $bSurveyExists)

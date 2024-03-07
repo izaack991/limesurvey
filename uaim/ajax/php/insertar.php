@@ -11,9 +11,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-session_start();
 $conn->set_charset("utf8");
-$atoken = $_COOKIE['atoken'];
+session_start();
+$id_respuesta = $_COOKIE['id_respuesta'];
 $tipo_encuesta = $_SESSION['tipo_encuesta'];
 if( $_SESSION['no_empleado'])
 {
@@ -32,7 +32,7 @@ if( $tipo_encuesta== 1)
     ////////////////////////////////////////////////////////////////////////////////////////////////
     $sql = "SELECT MAX(id) AS id
     FROM lime_survey_291758
-    WHERE docente = 0 AND token = '$atoken'";
+    WHERE token = 0 AND token = '$atoken'";
     $resultado = $conn->query($sql);
     print_r($_SESSION);
     // Verificar si se encontraron resultados
@@ -42,7 +42,7 @@ if( $tipo_encuesta== 1)
         $id = $fila['id'];
     
         // Consulta preparada para evitar inyección SQL
-        $sql2 = "UPDATE lime_survey_291758
+        $sql2 = "UPDATE lime_survey_595288
         SET docente = '$docente'
         WHERE id = $id ";
     
@@ -50,7 +50,7 @@ if( $tipo_encuesta== 1)
         $conn->close();
         include 'conexion.php';
         // Cerrar la conexión
-        $sql3 = "INSERT INTO lime_uaim_encuesta (token, id_evaluador, id_evaluado, fecha, id_unidadAcademica, id_carrera, id_semestre, id_grupo) VALUES ('$atoken', '$matricula', '$docente', NOW(), $id_unidadAcademica, $id_carrera, $id_semestre, $grupo)";
+        $sql3 = "INSERT INTO lime_uaim_encuesta (token, id_evaluador, id_evaluado, fecha, id_unidadAcademica, id_carrera, id_semestre, id_grupo) VALUES ('$id_encuesta', '$matricula', '$docente', NOW(), $id_unidadAcademica, $id_carrera, $id_semestre, $grupo)";
     
         $resultado = $conn->query($sql3);
         $conn->close();

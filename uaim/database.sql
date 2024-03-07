@@ -99,7 +99,7 @@ create table lime_uaim_tipoE(
 );
 
 CREATE TABLE lime_uaim_encuesta (
-    token varchar (50),
+    id_respuesta varchar (50),
     id_encuesta tinyint,
     id_evaluador VARCHAR(25) NOT NULL,
     id_evaluado VARCHAR(25) NOT NULL,
