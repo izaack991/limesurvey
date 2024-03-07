@@ -7,7 +7,7 @@ function cargarc() {
             $('#docentec').empty();
             // Agregar las opciones al select
             $.each(data, function (index, docentec) {
-                $('#docentec').append('<option value="' + docentec.no_empleado + '">' + docentec.nombre+ '</option>');
+                $('#docentec').append('<option value="' + docentec.no_empleado + '">' + docentec.nombre+ ' ' + docentec.apellido+'</option>');
             });
         },
         error: function (error) {
@@ -25,7 +25,7 @@ function cargarjsa() {
             $('#docentejsa').empty();
             // Agregar las opciones al select
             $.each(data, function (index, docentejsa) {
-                $('#docentejsa').append('<option value="' + docentejsa.no_empleado + '">' + docentejsa.nombre + '</option>');
+                $('#docentejsa').append('<option value="' + docentejsa.no_empleado + '">' + docentejsa.nombre+ ' ' + docentejsa.apellido+'</option>');
             });
         },
         error: function (error) {
@@ -43,7 +43,7 @@ function cargarp() {
             $('#docentep').empty();
             // Agregar las opciones al select
             $.each(data, function (index, docentep) {
-                $('#docentep').append('<option value="' + docentep.no_empleado + '">' + docentep.nombre+ '</option>');
+                $('#docentep').append('<option value="' + docentep.no_empleado + '">' + docentep.nombre+ ' ' + docentep.apellido+'</option>');
             });
         },
         error: function (error) {
@@ -51,3 +51,22 @@ function cargarp() {
         }
     });
 }
+
+function cargara() {
+    $.ajax({
+        url: '../ajax/php/docentea.php',
+        method: 'GET',
+        dataType: 'json',  // Esperamos datos en formato JSON
+        success: function (data) {
+            $('#docentea').empty();
+            // Agregar las opciones al select
+            $.each(data, function (index, docentea) {
+                $('#docentea').append('<option value="' + docentea.no_empleado + '">' + docentea.nombre+ ' ' + docentea.apellido+'</option>');
+            });
+        },
+        error: function (error) {
+            console.error('Error al cargar evaluacion par:', error);
+        }
+    });
+}
+

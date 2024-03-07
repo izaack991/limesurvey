@@ -87,7 +87,7 @@ if ($correo == true){
 
         switch (tipoEncuesta) {
     case "seleccion_1":
-        contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Auto Evaluacion </label><input type='hidden'name='tipo_encuesta' value='2'><select id='docente' onclick='cargar()'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
+        contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Auto Evaluacion </label><input type='hidden'name='tipo_encuesta' value='2'><select id='docentea' onclick='cargara()'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
         break;
     case "seleccion_2":
         contenidoSeleccionado = "<form action='Redireccion.php' method='post'><label> Evaluacion Docente Coordinador P.E</label><input type='hidden'name='tipo_encuesta' value='3'><select id='docentec' onclick='cargarc()'><option value=''>Seleccionar docente</option></select><button type='submit' id='enviar' class='btn btn-primary'>Enviar</button></form>";
