@@ -2,12 +2,13 @@
 //print_r($_SESSION);
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
+    session_start();
     unset($_SESSION['docente']);
     $length = 15; // Puedes ajustar esto según tus necesidades
     $id_respuesta = bin2hex(random_bytes($length));
     setcookie("id_respuesta", $id_respuesta, time() + (86400 * 30), "/");
     $tipo_encuesta = $_POST["tipo_encuesta"];
-    $_SESSION['tipo_encuesta'] =$tipo_encuesta;
+    $_SESSION['tipo_encuesta'] = $tipo_encuesta;
     if($tipo_encuesta == 1)
         {
         $unidadacademica = $_POST["unidadacademica"];
@@ -46,33 +47,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     else if($tipo_encuesta == 2)
     {
-        echo"autoevaluacion";
         include '../ajax/php/insertar.php';
+        //echo "<p>$tipo_encuesta</p>";
+        echo "<p>$docente1</p>";
         header("Location: http://localhost/limesurvey/index.php/616935?newtest=Y&lang=es");
+
+        print_r($_SESSION);
     }
     else if($tipo_encuesta == 3)
     {
         echo"docente cordinador";
-        $docente = $_POST["docentec"];
-        $_SESSION['docente'] = $docente;
+        $docenteReceptor = $_POST["docentec"];
+        $_SESSION['docenteReceptor'] = $docenteReceptor;
         echo $docente;
         include '../ajax/php/insertar.php';
+        header("Location: http://localhost/limesurvey/index.php/296592?newtest=Y&lang=es");
     }
     else if($tipo_encuesta == 4)
     {
+
         echo"evaluacion jefe de seccion academica";
-        $docente = $_POST["docentejsa"];
-        $_SESSION['docente'] = $docente;
+        $docenteReceptor = $_POST["docentejsa"];
+        $_SESSION['docenteReceptor'] = $docenteReceptor;
+        echo "<p>$tipo_encuesta</p>";
         echo $docente;
+
         include '../ajax/php/insertar.php';
+        header("Location: http://localhost/limesurvey/index.php/791423?newtest=Y&lang=es");
     }
     else if($tipo_encuesta == 5) 
     {
         echo"evaluacion par";
-        $docentep = $_POST["docentep"];
-        $_SESSION['docente'] = $docente;
+        $docenteReceptor = $_POST["docentep"];
+        $_SESSION['docenteReceptor'] = $docenteReceptor;
         echo $docentep;
-        //include '../ajax/php/insertar.php';
+        include '../ajax/php/insertar.php';
+        header("Location: http://localhost/limesurvey/index.php/915254?newtest=Y&lang=es");
     }
     else
     {

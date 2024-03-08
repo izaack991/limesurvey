@@ -12,14 +12,11 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 $conn->set_charset("utf8");
-session_start();
 $id_respuesta = $_COOKIE['id_respuesta'];
 $tipo_encuesta = $_SESSION['tipo_encuesta'];
-$docente = $_SESSION['docente'];
-if( $_SESSION['no_empleado'])
-{
-    $docente1 = $_SESSION['no_empleado'];
-}
+$docenteReceptor = $_SESSION['docenteReceptor'];
+$docente1 = $_SESSION['no_empleado'];
+
 if( $tipo_encuesta== 1)
 {
     $id_unidadAcademica = $_SESSION['unidadacademica'] ;
@@ -67,8 +64,9 @@ else if($tipo_encuesta == 2)
 else if($tipo_encuesta == 3)
 {
     include 'conexion.php';
+
     // Cerrar la conexión
-    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','3', '$docente1', '$docente1', NOW())";
+    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','3', '$docente1', '$docenteReceptor', NOW())";
 
     $conn->query($sql3);
     $conn->close();
@@ -77,7 +75,7 @@ else if($tipo_encuesta == 4)
 {
     include 'conexion.php';
     // Cerrar la conexión
-    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','4', '$docente1', '$docente1', NOW())";
+    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','4', '$docente1', '$docenteReceptor', NOW())";
 
     $conn->query($sql3);
     $conn->close();
@@ -86,7 +84,7 @@ else if($tipo_encuesta == 5)
 {
     include 'conexion.php';
     // Cerrar la conexión
-    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','5', '$docente1', '$docente1', NOW())";
+    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','5', '$docente1', '$docenteReceptor', NOW())";
     $conn->query($sql3);
     $conn->close();
 }

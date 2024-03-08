@@ -27,6 +27,6 @@ else{echo $resultados;}
 $conn->close();
 //regresa los resultados
 echo json_encode($resultados);
-$_SESSION['tipo_encuesta'] = 3;
+//$_SESSION['tipo_encuesta'] = 3;
 
 ?>

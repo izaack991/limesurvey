@@ -27,5 +27,5 @@ if ($result->num_rows > 0) {
 $conn->close();
 //regresa los resultados
 echo json_encode($resultados);
-$_SESSION['tipo_encuesta'] = 5;
+//$_SESSION['tipo_encuesta'] = 5;
 ?>
