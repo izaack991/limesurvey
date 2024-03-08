@@ -145,14 +145,12 @@ function cargaralumno() {
 
 
 function cargardocente() {
-  var AlumnoSeleccionado = $('#alumno').val();
-  if (AlumnoSeleccionado) {
-     
+
       $.ajax({
           url: '../ajax/php/docente.php',
           method: 'GET',
           dataType: 'json',  // Esperamos datos en formato JSON
-          data: { alumno: AlumnoSeleccionado }, // Pasar la unidad académica seleccionada
+          data: {}, // Pasar la unidad académica seleccionada
           success: function (data) {
             $('#docente').empty();
             // Agregar las opciones al select
@@ -164,10 +162,6 @@ function cargardocente() {
             console.error('Error al cargar carreras:', error);
         }
     });
-} else {
-    // Limpiar el select de carreras si no hay unidad académica seleccionada
-    $('#docente').empty();
-}
 }
 
 function boton(){

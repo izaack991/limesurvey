@@ -13,7 +13,6 @@ if ($correo == true){
 } else {
     echo '"<script language="javascript">alert("No tienes una sesion iniciada");window.location.href="../../login/login"</script>"';
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +48,7 @@ if ($correo == true){
 
               <div class="row mb-3">
                 <div class="input-group">
-                    <span class="input-group-text text-white fw-bold justify-content-center" style="background-color:#14ae5c;width:11rem;" for="carrera">Carrera</span>
+                    <span class="input-group-text text-white fw-bold justify-content-center" style="background-color:#14ae5c;width:11rem;" for="carrera">Programa Educativo</span>
                     <select class="form-select" id="carrera" name="carrera" onclick="cargarsemestre()">
                       <option value=""></option>
                     </select>
@@ -68,21 +67,11 @@ if ($correo == true){
               <div class="row mb-3">
                 <div class="input-group">
                     <span class="input-group-text text-white fw-bold justify-content-center" style="background-color:#14ae5c;width:11rem;" for="grupo">Grupo</span>
-                    <select class="form-select" id="grupo" name="grupo" onclick="cargaralumno()">
+                    <select class="form-select" id="grupo" name="grupo" onclick="cargardocente()">
                       <option value=""></option>
                     </select>
                 </div>
               </div>
-              
-              <div class="row mb-3">
-                <div class="input-group">
-                    <span class="input-group-text text-white fw-bold justify-content-center" style="background-color:#14ae5c;width:11rem;" for="alumno">Alumno</span>
-                    <select class="form-select" id="alumno" name="alumno" onclick="cargardocente()">
-                      <option value=""></option>
-                    </select>                    
-                </div>
-              </div>
-              
               <div class="row mb-3">
                 <div class="input-group">
                     <span class="input-group-text text-white fw-bold justify-content-center" style="background-color:#14ae5c;width:11rem;" for="docente">Docente</span>
