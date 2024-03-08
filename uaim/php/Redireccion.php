@@ -21,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $_SESSION['grupo'] = $grupo;
         $_SESSION['alumno'] = $alumno;
         $_SESSION['docente'] = $docente;
-        print_r($_SESSION);
         //require "../ajax/php/conexion.php";
         // Consulta SQL para obtener el alumno por su ID
         //$sql = "SELECT matricula FROM lime_uaim_alumno WHERE correo = '$correo'";
@@ -49,7 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         echo "<p>$docente1</p>";
         header("Location: http://localhost/limesurvey/index.php/149276?newtest=Y&lang=es-MX");
 
-        print_r($_SESSION);
     }
     else if($tipo_encuesta == 3)
     {

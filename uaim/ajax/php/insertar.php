@@ -32,7 +32,6 @@ if( $tipo_encuesta== 1)
     //FROM lime_survey_291758
     //WHERE id_respuesta = '$id_respuesta'";
     //$resultado = $conn->query($sql);
-    print_r($_SESSION);
     // Verificar si se encontraron resultados
    // if ($resultado->num_rows > 0) {
         // Obtener el resultado como un valor único

@@ -1,7 +1,6 @@
 <?php 
 error_reporting(0);
 session_start();
-print_r($_SESSION);
 $validacion = $_SESSION['emaildominio'];
 $correo = $_SESSION['cuenta'];
 
