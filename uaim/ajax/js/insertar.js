@@ -7,7 +7,8 @@ function insertar()
         success: function(response) {
             // Maneja la respuesta del archivo PHP aquí
             console.log(response);
-            alert('ayudame diosito');
+            //alert('Guardado',window.location.href="http://localhost/limesurvey/uaim/php/Pagina_Docente");
+            alert('Guardado');
 
         },
         error: function(xhr, status, error) {

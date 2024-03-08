@@ -4,9 +4,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     session_start();
     unset($_SESSION['docente']);
-    $length = 15; // Puedes ajustar esto según tus necesidades
-    $id_respuesta = bin2hex(random_bytes($length));
-    setcookie("id_respuesta", $id_respuesta, time() + (86400 * 30), "/");
     $tipo_encuesta = $_POST["tipo_encuesta"];
     $_SESSION['tipo_encuesta'] = $tipo_encuesta;
     if($tipo_encuesta == 1)
@@ -47,21 +44,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     else if($tipo_encuesta == 2)
     {
-        include '../ajax/php/insertar.php';
+        //include '../ajax/php/insertar.php';
         //echo "<p>$tipo_encuesta</p>";
-        echo "<p>$docente1</p>";
-        header("Location: http://localhost/limesurvey/index.php/616935?newtest=Y&lang=es");
+        //echo "<p>$docente1</p>";
+        echo "<script language='javascript'>window.open(http://localhost/limesurvey/index.php/616935?newtest=Y&lang=es)</script>";
+        //echo "<script> window.open(http://localhost/limesurvey/index.php/616935?newtest=Y&lang=es);</script>";
+        //header("Location: http://localhost/limesurvey/index.php/616935?newtest=Y&lang=es");
 
         print_r($_SESSION);
     }
     else if($tipo_encuesta == 3)
     {
+        //include '../ajax/php/insertar.php';
         echo"docente cordinador";
         $docenteReceptor = $_POST["docentec"];
         $_SESSION['docenteReceptor'] = $docenteReceptor;
         echo $docente;
-        include '../ajax/php/insertar.php';
-        header("Location: http://localhost/limesurvey/index.php/296592?newtest=Y&lang=es");
+        echo "<script> window.open(http://localhost/limesurvey/index.php/296592?newtest=Y&lang=es </script>, '_blank');";
+        //header("Location: http://localhost/limesurvey/index.php/296592?newtest=Y&lang=es");
     }
     else if($tipo_encuesta == 4)
     {
@@ -72,8 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         echo "<p>$tipo_encuesta</p>";
         echo $docente;
 
-        include '../ajax/php/insertar.php';
-        header("Location: http://localhost/limesurvey/index.php/791423?newtest=Y&lang=es");
+        //include '../ajax/php/insertar.php';
+
+        echo "<script> window.open(http://localhost/limesurvey/index.php/791423?newtest=Y&lang=es </script>, '_blank');";
+        //header("Location: http://localhost/limesurvey/index.php/791423?newtest=Y&lang=es");
     }
     else if($tipo_encuesta == 5) 
     {
@@ -81,8 +83,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $docenteReceptor = $_POST["docentep"];
         $_SESSION['docenteReceptor'] = $docenteReceptor;
         echo $docentep;
-        include '../ajax/php/insertar.php';
-        header("Location: http://localhost/limesurvey/index.php/915254?newtest=Y&lang=es");
+        //include '../ajax/php/insertar.php';
+        echo "<script> window.open(http://localhost/limesurvey/index.php/915254?newtest=Y&lang=es </script>, '_blank');";
+        //header("Location: http://localhost/limesurvey/index.php/915254?newtest=Y&lang=es");
     }
     else
     {

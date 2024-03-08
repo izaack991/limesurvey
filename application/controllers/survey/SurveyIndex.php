@@ -693,53 +693,30 @@ class SurveyIndex extends CAction
 
     private function isClientTokenDifferentFromSessionToken($clientToken, $surveyid)
     {
-        return $clientToken != '' && isset($_SESSION['survey_' . $surveyid]['token']) && $clientToken != $_SESSION['survey_' . $surveyid]['token'];
+        return $clientToken != '' && isset($_SESSION['survey_' . $surveyid]['token']) && $clientToken != $_SESSION['survey_' . $surveyid]['token'];   
     }
 
     private function isSurveyFinished($surveyid)
     {
-         echo 
-         ('
-         
-         <script src="/limesurvey/uaim/ajax/js/verificacion.js"></script>
-         <script src="/limesurvey/uaim/ajax/js/alerta_salir.js"></script>
-         <script src="/limesurvey/uaim/ajax/js/insertar.js"></script>
+    //unset($_COOKIE['SemillaEncuesta']);
+    //setcookie('SemillaEncuesta', '', time() - 3600, '/');
 
-         ');
+    //session_start();
+    //$prueba = $_COOKIE['SemillaEncuesta'];
+    //setcookie("SemillaEncuesta", $prueba, time() + (86400 * 30), "/");
+    //echo "<p> $prueba </p>";
+    //    echo 
+    //     ('
+    //     <script src="/limesurvey/uaim/ajax/js/insertar.js"></script>
+    //     ');
+
 //$seed = $param['gid'];
 //echo $seed;
-$servername = "localhost";  // Cambia esto si tu servidor de base de datos está en otro lugar
-$username = "root";// Usuario por defecto en XAMPP
-$password = "";    // Contraseña por defecto en XAMPP
-$dbname = "limesurveydb"; //Nombre de tu base de datos
-try {
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    $conn->set_charset("utf8");
-} catch (Exception $e) {
-    echo "Error de conexión: " . $e->getMessage();
-}
-$id_respuesta = $_COOKIE['id_respuesta'];
-echo $id_respuesta;
-$sql = "SELECT MAX(id) AS id FROM lime_survey_$surveyid WHERE id_respuesta IS NULL AND NOT EXISTS (SELECT * FROM lime_survey_$surveyid WHERE id_respuesta = '$id_respuesta')";
-$resultado = $conn->query($sql);
-print_r($resultado);
-if ($resultado->num_rows > 0) {
-    //Obtener el resultado como un valor único
-    $fila = $resultado->fetch_assoc();
-    $id = $fila['id'];
-    if($id!= null){
-    // Consulta preparada para evitar inyección SQL
-    $sql2 = "UPDATE lime_survey_$surveyid SET id_respuesta = '$id_respuesta'WHERE id = $id;";
-    $conn->query($sql2);
-    $conn->close();
-        }else{echo'        no se encontro id :(';}
-   } else {
-    echo "Error en la consulta: " . $conn->error;
-}
+
+print_r($_SESSION);
 // El array proporcionado
 
 // Mostrando la semilla directamente
-
     
 return isset($_SESSION['survey_' . $surveyid]['finished']) && $_SESSION['survey_' . $surveyid]['finished'] === true;
     }

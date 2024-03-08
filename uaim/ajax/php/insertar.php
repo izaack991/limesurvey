@@ -11,8 +11,10 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
+session_start();
 $conn->set_charset("utf8");
-$id_respuesta = $_COOKIE['id_respuesta'];
+$semilla = $_COOKIE['SemillaEncuesta'];
+//$semilla = $GLOBALS['SemillaDeEncuesta'];
 $tipo_encuesta = $_SESSION['tipo_encuesta'];
 $docenteReceptor = $_SESSION['docenteReceptor'];
 $docente1 = $_SESSION['no_empleado'];
@@ -46,51 +48,75 @@ if( $tipo_encuesta== 1)
         //$conn->close();
         include 'conexion.php';
         // Cerrar la conexión
-        $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha, id_unidadAcademica, id_carrera, id_semestre, id_grupo) VALUES ('$id_respuesta','1', '$matricula', '$docente', NOW(), $id_unidadAcademica, $id_carrera, $id_semestre, $grupo)";
+        $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha, id_unidadAcademica, id_carrera, id_semestre, id_grupo) VALUES ('$semilla','1', '$matricula', '$docente', NOW(), $id_unidadAcademica, $id_carrera, $id_semestre, $grupo)";
     
         $resultado = $conn->query($sql3);
         $conn->close();
-        setcookie('id_respuesta', '', time() - 3600, '/');
+        unset($_COOKIE['SemillaEncuesta']);
+        //setcookie('id_respuesta', '', time() - 3600, '/');
         header("Location: http://localhost/limesurvey/index.php/595288?newtest=Y&lang=es");
 }
 else if($tipo_encuesta == 2)
 {
-            include 'conexion.php';
-        // Cerrar la conexión
-        $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','2', '$docente1', '$docente1', NOW())";
-        $conn->query($sql3);
-        $conn->close();
+    include 'conexion.php';
+    
+    // Cerrar la conexión
+    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$semilla','2', '$docente1', '$docente1', NOW())";
+    $conn->query($sql3);
+    $conn->close();
+    
+    //unset($_COOKIE['SemillaEncuesta']);
+    //setcookie('SemillaEncuesta', '', time() - 3600, '/');
+    session_destroy();
+
 }
 else if($tipo_encuesta == 3)
 {
     include 'conexion.php';
-
+    
     // Cerrar la conexión
-    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','3', '$docente1', '$docenteReceptor', NOW())";
-
+    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$semilla','3', '$docente1', '$docenteReceptor', NOW())";
+    
     $conn->query($sql3);
     $conn->close();
+    
+    //unset($_COOKIE['SemillaEncuesta']);
+    //setcookie('SemillaEncuesta', '', time() - 3600, '/');
+    session_destroy();
+
 }
 else if($tipo_encuesta == 4)
 {
     include 'conexion.php';
+    
     // Cerrar la conexión
-    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','4', '$docente1', '$docenteReceptor', NOW())";
-
+    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$semilla','4', '$docente1', '$docenteReceptor', NOW())";
     $conn->query($sql3);
     $conn->close();
+    
+    //unset($_COOKIE['SemillaEncuesta']);
+    //setcookie('SemillaEncuesta', '', time() - 3600, '/');
+    session_destroy();
+
 }
 else if($tipo_encuesta == 5) 
 {
     include 'conexion.php';
+    
     // Cerrar la conexión
-    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$id_respuesta','5', '$docente1', '$docenteReceptor', NOW())";
+    $sql3 = "INSERT INTO lime_uaim_encuesta (id_respuesta, id_encuesta,id_evaluador, id_evaluado, fecha) VALUES ('$semilla','5', '$docente1', '$docenteReceptor', NOW())";
     $conn->query($sql3);
     $conn->close();
+
+    //unset($_COOKIE['SemillaEncuesta']);
+    //setcookie('SemillaEncuesta', '', time() - 3600, '/');
+    session_destroy();
+
 }
 else
 {
     echo'no se encontro el tipo de evaluacion';
 }
+
 
 ?>

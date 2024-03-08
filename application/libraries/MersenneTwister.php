@@ -28,6 +28,17 @@ function setSeed($surveyid)
             $table = \Yii::app()->db->schema->getTable('{{survey_' . $surveyid . '}}');
             if (isset($table->columns['seed'])) {
                 $_SESSION['survey_' . $surveyid]['startingValues']['seed'] = $seed;
+                session_start();
+                $_SESSION['SemillaEncuesta'] = $seed;
+                //$GLOBALS['SemillaDeEncuesta'] = $seed;
+                setcookie("SemillaEncuesta", $seed, time() + (86400 * 30), "/");
+                echo 
+                ('
+                <script src="/limesurvey/uaim/ajax/js/insertar.js"></script>
+                ');
+
+                unset($_COOKIE['SemillaEncuesta']);
+                //setcookie('SemillaEncuesta', '', time() - 3600, '/');
             }
         }
     }
