@@ -24,9 +24,10 @@ if( $tipo_encuesta== 1)
     $id_unidadAcademica = $_SESSION['unidadacademica'] ;
     $id_carrera = $_SESSION['carrera'];
     $id_semestre = $_SESSION['semestre'];
-    $matricula = $_SESSION['alumno'];
+    $matricula = $_SESSION['matricula'];
     $correo = $_SESSION['cuenta'];
     $grupo = $_SESSION['grupo'] ;
+    $docente = $_SESSION['docente'];
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //$sql = "SELECT MAX(id) AS id
     //FROM lime_survey_291758

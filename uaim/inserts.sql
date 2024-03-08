@@ -22,7 +22,7 @@ INSERT INTO lime_uaim_empleado (no_empleado,id_rol,es_tutor,es_docente, nombre, 
 
 INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020214','Jesús Annaly', 'Leyva Osorio',lower('Leyvaosorioannaly@gmail.com'),'JLEY0214','1');
 INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020218','Angie Fabiola', 'Suarez Reyes',lower('Angiefabiolasuarez@gmail.com'),'ASUA0218','1');
-INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('Rosa Emma', 'Cruz Fernandez','22020234',lower('cruzfern1113@gmail.com'),'RCRU0234','1');
+INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020234','Rosa Emma', 'Cruz Fernandez',lower('cruzfern1113@gmail.com'),'RCRU0234','1');
 INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020258','Cristian Oswaldo', 'Ramos Rojas',lower('cristianosw2002@gmail.com'),'CRAM0258','1');
 INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020244','Jesús Manuel', 'Soberanes Vizcarra',lower('Soberanesvizcarrajesus@gmail.com'),'JSOB0244','1');
 INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020210','Jesse Karolina', 'Segundo Lerma ',lower('karojesse001@gmail.com'),'JSEG0210','1');

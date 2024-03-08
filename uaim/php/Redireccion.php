@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         //}
         //$conn->close();
 
-        header("Location: http://localhost/limesurvey/index.php/595288?newtest=Y&lang=es");
+        header("Location: http://localhost/limesurvey/index.php/239574?newtest=Y&lang=es-MX");
     }
     else if($tipo_encuesta == 2)
     {

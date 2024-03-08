@@ -38,6 +38,7 @@ if ($result->num_rows > 0) {
     
             $result = $stmt->get_result();
             $info_alumno = $result->fetch_assoc();
+
             $_SESSION['matricula'] = $info_alumno['matricula'];
             if($result->num_rows > 0)
             {
