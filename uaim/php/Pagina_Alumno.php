@@ -30,55 +30,72 @@ if ($correo == true){
     <div class="row justify-content-center">
       <div class="col-md-6">
 
-        <div class="card">
+        <div class="card shadow ">
+          <div class="card-header" style="background-color: #333641;">
+              <h2 class="text-center text-white" style="font-weight: bold;">EVALUACIÓN DOCENTE</h2>
+          </div>
           <div class="card-body">
-            <h5 class="card-title text-center">Evaluacion Docente</h5>
-
+            <h5 class="text-center mb-4">Por favor seleccione la información relacionada a su unidad académica para continuar.</h4>
             <form action="Redireccion.php" method="post">
-              <div class="mb-3">
-                <label for="unidadacademica" class="form-label">Unidad Académica</label>
-                <select class="form-select" id="unidadacademica" name="unidadacademica" onclick="cargarcarrera()">
-                <option value=""></option>
-                </select>
+              
+              <div class="row mb-3">
+                <div class="input-group">
+                    <span class="input-group-text text-white fw-bold justify-content-center" style="background-color:#14ae5c;width:11rem;" for="unidadacademica">Unidad Académica</span>
+                    <select class="form-select" id="unidadacademica" name="unidadacademica" onclick="cargarcarrera()">
+                      <option value=""></option>
+                    </select>
+                </div>
               </div>
 
-              <div class="mb-3">
-                <label for="carrera" class="form-label">carrera</label>
-                <select class="form-select" id="carrera" name="carrera" onclick="cargarsemestre()">
-                <option value=""></option>
-                </select>
+              <div class="row mb-3">
+                <div class="input-group">
+                    <span class="input-group-text text-white fw-bold justify-content-center" style="background-color:#14ae5c;width:11rem;" for="carrera">Carrera</span>
+                    <select class="form-select" id="carrera" name="carrera" onclick="cargarsemestre()">
+                      <option value=""></option>
+                    </select>
+                </div>
               </div>
 
-              <div class="mb-3">
-                <label for="semestre" class="form-label">semestre</label>
-                <select class="form-select" id="semestre" name="semestre" onclick="cargargrupo()">
-                <option value=""></option>
-                </select>
+              <div class="row mb-3">
+                <div class="input-group">
+                    <span class="input-group-text text-white fw-bold justify-content-center" style="background-color:#14ae5c;width:11rem;" for="semestre">Semestre</span>
+                    <select class="form-select" id="semestre" name="semestre" onclick="cargargrupo()">
+                      <option value=""></option>
+                    </select>
+                </div>
+              </div>
+              
+              <div class="row mb-3">
+                <div class="input-group">
+                    <span class="input-group-text text-white fw-bold justify-content-center" style="background-color:#14ae5c;width:11rem;" for="grupo">Grupo</span>
+                    <select class="form-select" id="grupo" name="grupo" onclick="cargaralumno()">
+                      <option value=""></option>
+                    </select>
+                </div>
+              </div>
+              
+              <div class="row mb-3">
+                <div class="input-group">
+                    <span class="input-group-text text-white fw-bold justify-content-center" style="background-color:#14ae5c;width:11rem;" for="alumno">Alumno</span>
+                    <select class="form-select" id="alumno" name="alumno" onclick="cargardocente()">
+                      <option value=""></option>
+                    </select>                    
+                </div>
+              </div>
+              
+              <div class="row mb-3">
+                <div class="input-group">
+                    <span class="input-group-text text-white fw-bold justify-content-center" style="background-color:#14ae5c;width:11rem;" for="docente">Docente</span>
+                    <select class="form-select" id="docente" name="docente" onclick="boton()">
+                      <option value=""></option>
+                    </select>                                      
+                </div>
               </div>
 
-              <div class="mb-3">
-                <label for="grupo" class="form-label">grupo</label>
-                <select class="form-select" id="grupo" name="grupo" onclick="cargaralumno()">
-                <option value=""></option>
-                </select>
-              </div>
-
-              <div class="mb-3">
-                <label for="alumno" class="form-label">alumno</label>
-                <select class="form-select" id="alumno" name="alumno" onclick="cargardocente()">
-                <option value=""></option>
-                </select>
-              </div>
-
-              <div class="mb-3">
-                <label for="docente" class="form-label">Docente</label>
-                <select class="form-select" id="docente" name="docente" onclick="boton()">
-                <option value=""></option>
-                </select>
-              </div>
               <input type="hidden" id="tipo_encuesta" name="tipo_encuesta" value="1">
-
-              <button type="submit" id="enviar" class="btn btn-primary">Enviar</button>
+              <div class="row justify-content-center">
+                <button type="submit" id="enviar" class="btn btn-primary w-50 text-white fs-5 " style="font-weight:bold;">Enviar</button>
+              </div>
             </form>
           </div>
         </div>
