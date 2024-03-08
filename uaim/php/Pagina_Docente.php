@@ -37,10 +37,10 @@ if ($correo == true){
             <div class="input-group">
                 <span class="input-group-text text-white fw-bold justify-content-center" style="background-color:#14ae5c;width:11rem;" for="tipoEncuesta">Tipo de encuesta</span>
                 <select class="form-select" id="tipoEncuesta" name="tipoEncuesta" onclick="mostrarContenido(),cargara(),cargarc(),cargarjsa(),cargarp()">
-                    <option value="seleccion_1" id="es_docente1">Autoevaluacion 1</option>
+                    <option value="seleccion_1" id="es_docente1">Autoevaluacion</option>
                     <option value="seleccion_2" id="es_coordinador">Evaluacion Docente Cordinador</option>
                     <option value="seleccion_3" id="es_jefeseccion">Evaluacion Jefe De Seccion Academica</option>
-                    <option value="seleccion_4" id="es_docente">Evaluacion Pares 4</option>
+                    <option value="seleccion_4" id="es_docente">Evaluacion Pares</option>
                 </select>
             </div>
         </div>
