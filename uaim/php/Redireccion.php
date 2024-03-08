@@ -46,22 +46,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         //include '../ajax/php/insertar.php';
         //echo "<p>$tipo_encuesta</p>";
-        //echo "<p>$docente1</p>";
-        echo "<script language='javascript'>window.open(http://localhost/limesurvey/index.php/616935?newtest=Y&lang=es)</script>";
-        //echo "<script> window.open(http://localhost/limesurvey/index.php/616935?newtest=Y&lang=es);</script>";
-        //header("Location: http://localhost/limesurvey/index.php/616935?newtest=Y&lang=es");
+        echo "<p>$docente1</p>";
+        header("Location: http://localhost/limesurvey/index.php/149276?newtest=Y&lang=es-MX");
 
         print_r($_SESSION);
     }
     else if($tipo_encuesta == 3)
     {
-        //include '../ajax/php/insertar.php';
         echo"docente cordinador";
         $docenteReceptor = $_POST["docentec"];
         $_SESSION['docenteReceptor'] = $docenteReceptor;
         echo $docente;
-        echo "<script> window.open(http://localhost/limesurvey/index.php/296592?newtest=Y&lang=es </script>, '_blank');";
-        //header("Location: http://localhost/limesurvey/index.php/296592?newtest=Y&lang=es");
+        //include '../ajax/php/insertar.php';
+        header("Location: http://localhost/limesurvey/index.php/276738?newtest=Y&lang=es-MX");
     }
     else if($tipo_encuesta == 4)
     {
@@ -73,9 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         echo $docente;
 
         //include '../ajax/php/insertar.php';
-
-        echo "<script> window.open(http://localhost/limesurvey/index.php/791423?newtest=Y&lang=es </script>, '_blank');";
-        //header("Location: http://localhost/limesurvey/index.php/791423?newtest=Y&lang=es");
+        header("Location: http://localhost/limesurvey/index.php/294251?newtest=Y&lang=es-MX");
     }
     else if($tipo_encuesta == 5) 
     {
@@ -84,8 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $_SESSION['docenteReceptor'] = $docenteReceptor;
         echo $docentep;
         //include '../ajax/php/insertar.php';
-        echo "<script> window.open(http://localhost/limesurvey/index.php/915254?newtest=Y&lang=es </script>, '_blank');";
-        //header("Location: http://localhost/limesurvey/index.php/915254?newtest=Y&lang=es");
+        header("Location: http://localhost/limesurvey/index.php/152454?newtest=Y&lang=es-MX");
     }
     else
     {

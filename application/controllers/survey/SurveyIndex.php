@@ -713,7 +713,7 @@ class SurveyIndex extends CAction
 //$seed = $param['gid'];
 //echo $seed;
 
-print_r($_SESSION);
+//print_r($_SESSION);
 // El array proporcionado
 
 // Mostrando la semilla directamente

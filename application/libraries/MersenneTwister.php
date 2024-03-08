@@ -36,7 +36,6 @@ function setSeed($surveyid)
                 ('
                 <script src="/limesurvey/uaim/ajax/js/insertar.js"></script>
                 ');
-
                 unset($_COOKIE['SemillaEncuesta']);
                 //setcookie('SemillaEncuesta', '', time() - 3600, '/');
             }

@@ -8,12 +8,13 @@ $docentep = $_SESSION['cuenta'];
 //que el alumno este en el grupo a cual da clases y si el alumno ya a calificado al docente
 $sql = "SELECT d.no_empleado, d.nombre, d.apellido
 FROM lime_uaim_empleado d
-WHERE d.es_docente = 1 -- El ID del rol del coordinador --AND d.no_empleado = @no_empleado_maestro -- Verifica que sea el docente actual
+WHERE d.es_docente = 1 AND d.no_empleado != $docentep -- El ID del rol del coordinador --AND d.no_empleado = @no_empleado_maestro -- Verifica que sea el docente actual
 AND NOT EXISTS (
     SELECT 1
     FROM lime_uaim_encuesta e
     WHERE e.id_evaluado = d.no_empleado
-    AND e.id_evaluador = $docentep -- Verifica que el maestro actual ya no haya calificado al coordinador
+    AND e.id_evaluador = $docentep
+    AND e.id_encuesta = 5 -- Verifica que el maestro actual ya no haya calificado al coordinador
 );";
 
 $result = $conn->query($sql);

@@ -67,7 +67,7 @@ else if($tipo_encuesta == 2)
     
     //unset($_COOKIE['SemillaEncuesta']);
     //setcookie('SemillaEncuesta', '', time() - 3600, '/');
-    session_destroy();
+    //session_destroy();
 
 }
 else if($tipo_encuesta == 3)
@@ -82,7 +82,7 @@ else if($tipo_encuesta == 3)
     
     //unset($_COOKIE['SemillaEncuesta']);
     //setcookie('SemillaEncuesta', '', time() - 3600, '/');
-    session_destroy();
+    //session_destroy();
 
 }
 else if($tipo_encuesta == 4)
@@ -96,7 +96,7 @@ else if($tipo_encuesta == 4)
     
     //unset($_COOKIE['SemillaEncuesta']);
     //setcookie('SemillaEncuesta', '', time() - 3600, '/');
-    session_destroy();
+    //session_destroy();
 
 }
 else if($tipo_encuesta == 5) 
@@ -110,7 +110,7 @@ else if($tipo_encuesta == 5)
 
     //unset($_COOKIE['SemillaEncuesta']);
     //setcookie('SemillaEncuesta', '', time() - 3600, '/');
-    session_destroy();
+    //session_destroy();
 
 }
 else
@@ -118,5 +118,6 @@ else
     echo'no se encontro el tipo de evaluacion';
 }
 
+setcookie('SemillaEncuesta', '', time() + 0, '/');
 
 ?>

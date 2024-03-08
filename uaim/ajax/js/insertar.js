@@ -17,4 +17,7 @@ function insertar()
         }
     });
 });
+
+setcookie('SemillaEncuesta', '', time() - 3600, '/');
+
 }
