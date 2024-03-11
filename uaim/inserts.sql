@@ -1,13 +1,13 @@
 USE unidad2;
-INSERT INTO lime_uaim_tipoE value(1,'Alumno-Docente');
-INSERT INTO lime_uaim_tipoE value(2,'Autoevaluacion');
-INSERT INTO lime_uaim_tipoE value(3,'Cordinador-Docente');
-INSERT INTO lime_uaim_tipoE value(4,'Jefe de Seccion academica-Docente');
-INSERT INTO lime_uaim_tipoE value(5,'Evaluacion Par');
+INSERT INTO lime_uaim_tipoe value(1,'Alumno-Docente');
+INSERT INTO lime_uaim_tipoe value(2,'Autoevaluacion');
+INSERT INTO lime_uaim_tipoe value(3,'Cordinador-Docente');
+INSERT INTO lime_uaim_tipoe value(4,'Jefe de Seccion academica-Docente');
+INSERT INTO lime_uaim_tipoe value(5,'Evaluacion Par');
 
 INSERT INTO lime_uaim_unidadacademica (nombre,direccion,telefono) VALUES ('Unidad Los Mochis','Los Mochis','6871234556');
 INSERT INTO lime_uaim_semestre (nombre) VALUES ('Primer Semestre'),('Segundo Semestre'),('Tercer Semestre'),('Cuarto Semestre'),('Quinto Semestre'),('Sexto Semestre'),('Septimo Semestre'),('Octavo Semestre'),('Noveno Semestre');
-INSERT INTO lime_uaim_carrera (nombre, id_unidadAcademica) VALUES ('Licenciatura en Contaduria','1');
+INSERT INTO lime_uaim_carrera (nombre, id_unidadacademica) VALUES ('Licenciatura en Contaduria','1');
 INSERT INTO lime_uaim_grupo (nombre, id_carrera, id_semestre) VALUES ('CONT01','1','6');
 INSERT INTO lime_uaim_materia (nombre) VALUES ('Contabilidad de sociedades y especiales');
 insert into lime_uaim_rol values ('1','Empleado');
@@ -30,6 +30,6 @@ INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_g
 INSERT INTO lime_uaim_alumno (matricula,nombre, apellido, correo, password, id_grupo) VALUES ('22020309','Juan Carlos', 'Alvarez Leyva',lower('juanfullbuster1428@gmail.com'),'JALV0309','1');
 
 INSERT INTO lime_uaim_materiasemestre (id_semestre,id_carrera,id_materia) VALUES (6,1,1);
-INSERT INTO lime_uaim_docentemateria (no_empleado,id_materiaSemestre,id_grupo) VALUES (756,1,1);
+INSERT INTO lime_uaim_docentemateria (no_empleado,id_materiasemestre,id_grupo) VALUES (756,1,1);
 
 INSERT INTO lime_uaim_tutorgrupo (no_empleado,id_grupo) VALUES ('697','1');

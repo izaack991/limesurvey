@@ -5,15 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="src/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="/limesurvey/tmp/assets/21fc790d/ibm-sans.css" />
-    <link rel="stylesheet" type="text/css" href="/limesurvey/tmp/assets/b89669df/ibm-serif.css" />
-    <link rel="stylesheet" type="text/css" href="/limesurvey/tmp/assets/6b7e9946/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="/limesurvey/tmp/assets/a6791290/remixicon.css" />
-    <link rel="stylesheet" type="text/css" href="/limesurvey/tmp/assets/9f1723ef/build/embeddables.min.css" />
-    <link rel="stylesheet" type="text/css" href="/limesurvey/tmp/assets/711c50cf/css/variations/theme_apple.css" />
-    <link rel="stylesheet" type="text/css" href="/limesurvey/tmp/assets/711c50cf/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="/limesurvey/tmp/assets/711c50cf/css/custom.css" />
-    <link rel="stylesheet" type="text/css" href="/limesurvey/tmp/assets/711c50cf/./css/survey-list.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Login</title>
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100" style="background-color:#f9f9fb;">
@@ -25,14 +17,14 @@
             <br>
             <div class="text-center fs-1 fw-bold">Iniciar Sesión</div>
             <div class="input-group mt-4">
-                <div class="input-group-text" style="color: white;">
+                <div class="input-group-text" style="color: white; background-color:#14ae5c">
                     <i class='bx bxs-user' style="height: 1rem;"></i>
                 </div>
                 <input class="form-control" type="text" placeholder="Correo o Numero de empleado" name="usuario" required="true" title="Solo se permiten letras, números y espacios." >
                 <br>
             </div>
             <div class="input-group mt-2">
-                <div class="input-group-text" style="color: white;">
+                <div class="input-group-text" style="color: white; background-color:#14ae5c">
                     <i class='bx bxs-lock' style="height: 1rem;"></i>
                 </div>
                 <input class="form-control" maxlength="15" type="password" placeholder="Contraseña" name="password" required="true" pattern="[a-zA-Z0-9\s]*" title="Solo se permiten letras, números y espacios." >

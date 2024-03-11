@@ -3,20 +3,20 @@ CREATE DATABASE unidad2;
 USE unidad2;
 
 -- Crear tabla UnidadAcademica
-CREATE TABLE lime_uaim_unidadAcademica (
-    id_unidadAcademica INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE lime_uaim_unidadacademica (
+    id_unidadacademica INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     direccion VARCHAR(255),
     telefono VARCHAR(20)
 );
-ALTER TABLE lime_uaim_unidadAcademica AUTO_INCREMENT = 1;
+ALTER TABLE lime_uaim_unidadacademica AUTO_INCREMENT = 1;
 
 -- Crear tabla Carrera
 CREATE TABLE lime_uaim_carrera (
     id_carrera INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
-    id_unidadAcademica INT NOT NULL,
-    FOREIGN KEY (id_unidadAcademica) REFERENCES lime_uaim_unidadAcademica(id_unidadAcademica)
+    id_unidadacademica INT NOT NULL,
+    FOREIGN KEY (id_unidadacademica) REFERENCES lime_uaim_unidadacademica(id_unidadacademica)
 );
 ALTER TABLE lime_uaim_carrera AUTO_INCREMENT = 1;
 
@@ -72,8 +72,8 @@ CREATE TABLE lime_uaim_materia (
 ALTER TABLE lime_uaim_materia AUTO_INCREMENT = 1;
 
 -- Crear tabla intermedia MateriaSemestre
-CREATE TABLE lime_uaim_materiaSemestre (
-    id_materiaSemestre INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE lime_uaim_materiasemestre (
+    id_materiasemestre INT PRIMARY KEY AUTO_INCREMENT,
     id_semestre INT NOT NULL,
     id_carrera INT NOT NULL,
     id_materia INT NOT NULL,
@@ -81,19 +81,19 @@ CREATE TABLE lime_uaim_materiaSemestre (
     FOREIGN KEY (id_carrera) REFERENCES lime_uaim_carrera(id_carrera),
     FOREIGN KEY (id_materia) REFERENCES lime_uaim_materia(id_materia)
 );
-ALTER TABLE lime_uaim_materiaSemestre AUTO_INCREMENT = 1;
+ALTER TABLE lime_uaim_materiasemestre AUTO_INCREMENT = 1;
 
 -- Crear tabla intermedia MaestroMateria
-CREATE TABLE lime_uaim_docenteMateria (
+CREATE TABLE lime_uaim_docentemateria (
     no_empleado VARCHAR(25) NOT NULL,
-    id_materiaSemestre INT NOT NULL,
+    id_materiasemestre INT NOT NULL,
     id_grupo INT NOT NULL,
     FOREIGN KEY (no_empleado) REFERENCES lime_uaim_empleado(no_empleado),
     FOREIGN KEY (id_grupo) REFERENCES lime_uaim_grupo(id_grupo),
-    FOREIGN KEY (id_materiaSemestre) REFERENCES lime_uaim_materiaSemestre(id_materiaSemestre)
+    FOREIGN KEY (id_materiasemestre) REFERENCES lime_uaim_materiasemestre(id_materiasemestre)
 );
 
-create table lime_uaim_tipoE(
+create table lime_uaim_tipoe(
     id_encuesta tinyint primary key,
     nombre varchar(255)
 );
@@ -104,7 +104,7 @@ CREATE TABLE lime_uaim_encuesta (
     id_evaluador VARCHAR(25) NOT NULL,
     id_evaluado VARCHAR(25) NOT NULL,
     fecha DATE,
-    id_unidadAcademica INT NOT NULL,
+    id_unidadacademica INT NOT NULL,
     id_carrera INT NOT NULL,
     id_semestre INT NOT NULL,
     id_grupo INT NOT NULL,
@@ -112,10 +112,10 @@ CREATE TABLE lime_uaim_encuesta (
     -- FOREIGN KEY (id_carrera) REFERENCES lime_uaim_carrera(id_carrera),
     -- FOREIGN KEY (id_semestre) REFERENCES lime_uaim_semestre(id_semestre),
     -- FOREIGN KEY (id_grupo) REFERENCES lime_uaim_grupo(id_grupo
-    FOREIGN KEY (id_encuesta) REFERENCES lime_uaim_tipoE(id_encuesta)
+    FOREIGN KEY (id_encuesta) REFERENCES lime_uaim_tipoe(id_encuesta)
 );
 
-CREATE TABLE lime_uaim_tutorGrupo (
+CREATE TABLE lime_uaim_tutorgrupo (
 	no_empleado VARCHAR(25) NOT NULL,
     id_grupo INT NOT NULL,
 	FOREIGN KEY (no_empleado) REFERENCES lime_uaim_empleado(no_empleado),
